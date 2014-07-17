@@ -1,8 +1,8 @@
 package zisch;
 
-public class Test {
-	public Test() {
-		super();
-	}
-}
 
+public class Test {
+  public Test () {
+    super();
+  }
+}
