@@ -1,0 +1,6 @@
+
+Temporarily deactivate H2-DB support webconsole:
+
+--> /PAW_1_PrinterBasketFEWeb/src/gen/resources/activeSpringProfiles.properties
+--> spring.profile.h2DbSupport=false
+

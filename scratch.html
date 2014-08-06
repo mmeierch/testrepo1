@@ -1,0 +1,145 @@
+<form method="post" enctype="multipart/form-data"
+	action="/THU/1/PrinterBasketFEWeb/uploadForm.htm" id="uploadForm"
+	name="null"><script type="text/javascript"
+	src="globalres/js/lib/jquery-1.8.3.js"></script> <script
+	type="text/javascript" src="globalres/js/lib/jquery.form.js"></script>
+<script type="text/javascript" src="globalres/js/lib/underscore.js"></script>
+<script type="text/javascript" src="globalres/js/printer-basket.js"></script>
+<script type="text/javascript" src="globalres/js/upload.js"></script> <script
+	type="text/javascript"
+	src="/res/edgestatic/UWI/2/UWResources/UWR/2.14.1/js/uw.jquery.combobox.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+					function h(value) {
+			    		$('#purpose').val(value);
+			    	}
+			    	$('#changePurposeDropDown').uwrcombobox({
+				    		callbackInputBlur: h,
+			    			resetInvalidInput: false
+			    		}
+			    	);
+			    	
+			    	//quick-fix: dropdown(manual input support) - set max length 
+			    	$('#uwrcombobox_inputfield_changePurposeDropDown').css('width','475px');
+			    	$('.uwrComboBoxUl').css('width','475px');
+			    	$('#uwrcombobox_inputfield_changePurposeDropDown').attr("maxlength", 50); 	
+			    	
+					//onkeypressed on inputfield(purpose) - submit the form after blur the input-field !
+					$(document).on('keypress', 'input', function(e) {
+					  if(e.keyCode == 13 && $('#uwrcombobox_inputfield_changePurposeDropDown').is(":focus") ) {
+					    e.preventDefault();
+					    $('#uwrcombobox_inputfield_changePurposeDropDown').blur();
+					    $("#pbUploadButton").click();
+					  }
+					});
+			    });
+</script>
+<div class="cuiSwitchColor" id="containerbox1_container">
+<table cellpadding="0" cellspacing="0" border="0" id="containerbox1">
+	<tr id="containerbox1_title" class="cuiContainerGroupBoxTitle">
+		<td class="cuiContainerGroupBoxTitle">Document name</td>
+	</tr>
+	<tr class="uwrCollapsible" id="containerbox1_body">
+		<td class="cuiContainerGroupBox">
+		<div class="showme">
+		<fieldset class="cuiGroupBoxNew"><legend
+			class="cuiGroupBoxTitleEmpty"></legend>
+		<div class="cuiGroupBoxPadding">
+		<table cellspacing="0" border="0" cellpadding="0"
+			style="width: 1px; height: 10px;">
+			<tr>
+				<td></td>
+			</tr>
+		</table>
+		<input value="CE9AG6L262ZCBEXA" type="hidden"
+			name="selectedInternalBusinessRelationshipId">
+		<table cellspacing="0" summary="" class="pbUpload uwrLabelBox270"
+			border="0" cellpadding="0">
+			<tr class="uwrLb">
+				<td class="uwrLabelMargin cuiLabel uwrLb cuiLabelSingleColumnLayout"
+					style="vertical-align: middle;"><label>File name</label></td>
+				<td class="cuiValueArea uwrLb" style="vertical-align: middle;"><script
+					type="text/javascript"
+					src="/res/edgestatic/UWI/2/UWResources/UWR/2.14.1/js/uwAutoTab.js"></script>
+				<input class="cuiEntryfieldFont cuiEntryfield"
+					accept="application/pdf" type="file" name="file" id="upload_field"
+					onchange="BasketUtils.ajaxSubmitForm( '#uploadForm', 'checkFormId', Upload.selectForm );"></td>
+			</tr>
+			<tr class="uwrLb">
+				<td class="uwrLabelMargin cuiLabel uwrLb cuiLabelSingleColumnLayout"
+					style="vertical-align: middle;"><label>Name</label></td>
+				<td class="cuiValueArea uwrLb" style="vertical-align: middle;"><input
+					class="cuiEntryfieldFont cuiEntryfield" type="text" name="title"></td>
+			</tr>
+			<tr class="uwrLb">
+				<td class="uwrLabelMargin cuiLabel uwrLb cuiLabelSingleColumnLayout"
+					style="vertical-align: middle;"><label id="labelDocTypeId">Select
+				type</label></td>
+				<td class="cuiValueArea uwrLb" style="vertical-align: middle;"><select
+					size="1" class="cuiListBoxFont cuiListBox"
+					name="selectedDocumentType">
+					<option value="">--- Please select ---</option>
+					<option
+						value="com.ubs.swidMLV.v1.referencedata.dynamic.DocumentTypeEnum:INV_PRO">Investment
+					proposal</option>
+					<option
+						value="com.ubs.swidMLV.v1.referencedata.dynamic.DocumentTypeEnum:BPR">Advisory
+					minutes</option>
+					<option
+						value="com.ubs.swidMLV.v1.referencedata.dynamic.DocumentTypeEnum:PID">Product
+					information document</option>
+				</select><input value="on"
+					style="margin-left: 40px; width: 15px; float: left"
+					checked="checked" class="cuiRadioButton"
+					onclick="deselectUWRadioButton( 'formSelected'); disableUWDropDown( 'selectedDocumentType', false); disableUWDropDown( 'form', true);"
+					type="radio" name="docTypeSelected" id="docTypeSelectedId"><label
+					class="cuiRadioButtonOption cuiIEFix" for="docTypeSelectedId"></label></td>
+			</tr>
+			<tr class="uwrLb">
+				<td class="uwrLabelMargin cuiLabel uwrLb cuiLabelSingleColumnLayout"
+					style="vertical-align: middle;"><label id="labelFormId">Select
+				form_en</label></td>
+				<td class="cuiValueArea uwrLb" style="vertical-align: middle;"><select
+					size="1" class="cuiListBoxFont cuiListBoxDisabled" name="form"
+					id="formDropDown" disabled="disabled">
+					<option value="">--- Please select ---</option>
+					<option
+						value="com.ubs.swidMLV.v1.referencedata.dynamic.FormSupportEacceptEnum:99999MF1">99999MF1:
+					TEST FORM with DocType to be removed !!!!!!!</option>
+					<option
+						value="com.ubs.swidMLV.v1.referencedata.dynamic.FormSupportEacceptEnum:99999MF2">99999MF2:
+					TEST FORM without DocType to be removed !!!!!!!</option>
+					<option
+						value="com.ubs.swidMLV.v1.referencedata.dynamic.FormSupportEacceptEnum:61058EJ3">61058EJ3:
+					TEST FORM without DocType to be removed !!!!!!!</option>
+				</select><input value="on"
+					style="margin-left: 40px; width: 15px; float: left"
+					class="cuiRadioButton"
+					onclick="deselectUWRadioButton( 'docTypeSelected'); disableUWDropDown( 'form', false); disableUWDropDown( 'selectedDocumentType', true);"
+					type="radio" name="formSelected" id="formSelectedId"><label
+					class="cuiRadioButtonOption cuiIEFix" for="formSelectedId"></label></td>
+			</tr>
+			<tr class="uwrLb">
+				<td class="uwrLabelMargin cuiLabel uwrLb cuiLabelSingleColumnLayout"
+					style="vertical-align: middle;"><label>Document
+				purpose</label></td>
+				<td class="cuiValueArea uwrLb" style="vertical-align: middle;">
+				<div style="margin-top: 2px;"><select size="1"
+					class="cuiListBoxFont cuiListBox" name="purposeSelected"
+					id="changePurposeDropDown">
+					<option value=""></option>
+				</select></div>
+				</td>
+			</tr>
+		</table>
+		</div>
+		</fieldset>
+		</div>
+		</td>
+	</tr>
+</table>
+</div>
+<input value="" type="hidden" name="purpose" id="purpose"><input
+	value="true" type="hidden" name="UW1_V2_FORM_SUBMIT"><input
+	value="758682410000" type="hidden" name="id"><input value="N"
+	type="hidden" name="printStatus"></form>
