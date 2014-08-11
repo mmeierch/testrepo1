@@ -7,7 +7,6 @@ package zisch.htmlparse;
 import java.util.concurrent.atomic.AtomicReference;
 
 import javax.xml.XMLConstants;
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -136,7 +135,7 @@ public final class HtmlDocumentBuilderFactory extends DocumentBuilderFactory {
    * {@inheritDoc}
    */
   @Override
-  public DocumentBuilder newDocumentBuilder () throws ParserConfigurationException {
+  public HtmlDocumentBuilder newDocumentBuilder () throws ParserConfigurationException {
     return new HtmlDocumentBuilder(mTargetNamespace.get());
   }
 }

@@ -629,7 +629,8 @@ public final class Report {
   /**
    * Resource bundle with messages.
    */
-  private static final ResourceBundle res = ResourceBundle.getBundle("org/w3c/tidy/TidyMessages");
+  private static final ResourceBundle res = ResourceBundle.getBundle(Report.class.getPackage().getName()
+          + ".TidyMessages");
 
   /**
    * Printed in GNU Emacs messages.
