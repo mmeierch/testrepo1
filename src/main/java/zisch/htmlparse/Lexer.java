@@ -51,7 +51,7 @@
  *  acknowledgment is not required but would be appreciated.
  *
  */
-package ch.dals.endorsed.jtidy;
+package zisch.htmlparse;
 
 
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ import org.xml.sax.SAXException;
  * @author Fabrizio Giustina
  * @author Zisch
  */
-public class Lexer {
+final class Lexer {
 
   /**
    * state: ignore whitespace.

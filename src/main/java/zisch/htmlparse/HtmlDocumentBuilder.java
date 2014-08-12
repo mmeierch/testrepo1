@@ -20,8 +20,6 @@ import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import ch.dals.endorsed.jtidy.Tidy;
-
 
 /**
  * TODO [javadoc]: type HtmlDocumentBuilder
@@ -39,15 +37,31 @@ public class HtmlDocumentBuilder extends DocumentBuilder {
    * target namespace}.
    */
   public HtmlDocumentBuilder () {
-    this(HtmlDocumentBuilderFactory.ATTRIBUTE_TARGET_NAMESPACE);
+    this(HtmlDocumentBuilderFactory.TARGET_NAMESPACE_DEFAULT_VALUE);
   }
 
   /**
-   * Default constructor.
+   * Constructor.
+   * 
+   * @param targetNamespace the fixed namespace URI which is assigned to all elements of the HTML documents parsed by
+   *          this builder; may be {@code null} or empty for no namespace
    */
   public HtmlDocumentBuilder (final String targetNamespace) {
     final String ts = targetNamespace == null ? null : targetNamespace.trim();
     mTargetNamespace = ts == null || ts.isEmpty() ? null : ts;
+  }
+
+  /**
+   * Returns the fixed namespace URI which is assigned to all elements of the HTML documents parsed by this builder; may
+   * be {@code null} or empty for no namespace.
+   * 
+   * @return the fixed namespace URI which is assigned to all elements of the HTML documents parsed by this builder; may
+   *         be {@code null} or empty for no namespace
+   * 
+   * @see #isNamespaceAware()
+   */
+  public String getTargetNamespace () {
+    return mTargetNamespace;
   }
 
   /**
@@ -59,8 +73,15 @@ public class HtmlDocumentBuilder extends DocumentBuilder {
   }
 
   /**
-   * An {@code HtmlDocumentBuilder} will ignore namespaces in the target documents (since they are not defined in HTML).
-   * However, by default the. {@linkplain HtmlDocumentBuilderFactory factory}
+   * An {@code HtmlDocumentBuilder} will ignore namespaces in the source documents (since they are not defined in HTML).
+   * However, all elements created by a specific builder will have a {@linkplain #getTargetNamespace() fixed target
+   * namespace} assigned. That target namespace is defined when the builder is constructed and defaults to the XHTML
+   * namespace {@code http://www.w3.org/1999/xhtml} (see
+   * {@link HtmlDocumentBuilderFactory#TARGET_NAMESPACE_DEFAULT_VALUE}).
+   * 
+   * @return always {@code false}
+   * 
+   * @see #getTargetNamespace()
    */
   @Override
   public boolean isNamespaceAware () {
@@ -96,7 +117,7 @@ public class HtmlDocumentBuilder extends DocumentBuilder {
    */
   @Override
   public Document newDocument () {
-    return Tidy.createEmptyDocument();
+    return Tidy.createEmptyDocument(mTargetNamespace);
   }
 
   /**
@@ -107,13 +128,13 @@ public class HtmlDocumentBuilder extends DocumentBuilder {
     // FIXME: check is not null!
     final Tidy t = tidy();
     if (is.getCharacterStream() != null) {
-      return t.parseDOM(is.getCharacterStream(), null);
+      return t.parseDOM(is.getCharacterStream(), mTargetNamespace);
 
     } else if (is.getByteStream() != null) {
       if (is.getEncoding() != null) {
         t.setInputEncoding(is.getEncoding());
       }
-      return t.parseDOM(is.getByteStream(), null);
+      return t.parseDOM(is.getByteStream(), mTargetNamespace);
 
     } else if (is.getSystemId() != null) {
       final URL url = new URL(is.getSystemId());
@@ -125,7 +146,7 @@ public class HtmlDocumentBuilder extends DocumentBuilder {
         if (enc != null) {
           t.setInputEncoding(enc);
         }
-        return t.parseDOM(in, null);
+        return t.parseDOM(in, mTargetNamespace);
       } finally {
         in.close();
       }

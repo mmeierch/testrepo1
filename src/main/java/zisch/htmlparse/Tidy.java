@@ -51,7 +51,7 @@
  *  acknowledgment is not required but would be appreciated.
  *
  */
-package ch.dals.endorsed.jtidy;
+package zisch.htmlparse;
 
 
 import java.io.FileInputStream;
@@ -62,7 +62,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Reader;
-import java.io.Serializable;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
@@ -81,13 +80,7 @@ import org.xml.sax.SAXException;
  * @author Fabrizio Giustina
  * @author Zisch
  */
-public class Tidy implements Serializable {
-
-  /**
-   * Serial Version UID to avoid problems during serialization.
-   */
-  static final long serialVersionUID = -2794371560623987718L;
-
+final class Tidy {
   /**
    * Alias for configuration options accepted in command line.
    */
@@ -1693,8 +1686,9 @@ public class Tidy implements Serializable {
   }
 
   /**
-   * <code>enclose-block-text</code>- if true text in blocks is wrapped in &lt;p&gt;'s. return <code>true</code> if tidy
-   * should will text text in blocks in &lt;p&gt;'s.
+   * If {@code true} text in blocks is wrapped in &lt;p&gt;'s.
+   * 
+   * @return {@code true} if text in blocks should be wrapped in paragraph elements, {@code false} otherwise
    * 
    * @see Configuration#encloseBlockText
    */
@@ -1993,9 +1987,10 @@ public class Tidy implements Serializable {
   }
 
   /**
-   * <code>trim-empty-elements</code>- trim empty elements.
+   * Trim empty elements.
    * 
-   * @param trim-empty-elements true = trim empty elements
+   * @param trimEmpty true = trim empty elements
+   * 
    * @see Configuration#trimEmpty
    */
   public void setTrimEmptyElements (boolean trimEmpty) {

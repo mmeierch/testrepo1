@@ -51,7 +51,7 @@
  *  acknowledgment is not required but would be appreciated.
  *
  */
-package ch.dals.endorsed.jtidy;
+package zisch.htmlparse;
 
 
 import org.w3c.dom.Attr;
@@ -67,7 +67,7 @@ import org.w3c.dom.TypeInfo;
  * @author Fabrizio Giustina
  * @author Zisch
  */
-public class DOMElementImpl extends DOMNodeImpl implements org.w3c.dom.Element {
+final class DOMElementImpl extends DOMNodeImpl implements org.w3c.dom.Element {
   /**
    * Instantiates a new DOM element.
    * 

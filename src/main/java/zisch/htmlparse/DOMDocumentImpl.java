@@ -51,7 +51,7 @@
  *  acknowledgment is not required but would be appreciated.
  *
  */
-package ch.dals.endorsed.jtidy;
+package zisch.htmlparse;
 
 
 import org.w3c.dom.DOMConfiguration;
@@ -64,9 +64,9 @@ import org.w3c.dom.DOMException;
  * @author Dave Raggett <a href="mailto:dsr@w3.org">dsr@w3.org </a>
  * @author Andy Quick <a href="mailto:ac.quick@sympatico.ca">ac.quick@sympatico.ca </a> (translation to Java)
  * @author Fabrizio Giustina
- * @version $Revision: 738 $ ($Author: fgiust $)
+ * @author Zisch
  */
-public class DOMDocumentImpl extends DOMNodeImpl implements org.w3c.dom.Document {
+final class DOMDocumentImpl extends DOMNodeImpl implements org.w3c.dom.Document {
   final String mNamespaceUri;
 
   /**

@@ -51,7 +51,7 @@
  *  acknowledgment is not required but would be appreciated.
  *
  */
-package ch.dals.endorsed.jtidy;
+package zisch.htmlparse;
 
 
 import java.util.Hashtable;
@@ -64,9 +64,9 @@ import java.util.Map;
  * @author Dave Raggett <a href="mailto:dsr@w3.org">dsr@w3.org </a>
  * @author Andy Quick <a href="mailto:ac.quick@sympatico.ca">ac.quick@sympatico.ca </a> (translation to Java)
  * @author Fabrizio Giustina
- * @version $Revision: 486 $ ($Author: fgiust $)
+ * @author Zisch
  */
-public class AttributeTable {
+final class AttributeTable {
 
   /**
    * href attribute.
@@ -218,7 +218,7 @@ public class AttributeTable {
           new Attribute("for", Dict.VERS_HTML40, AttrCheckImpl.IDREF), // LABEL
           new Attribute("frame", Dict.VERS_HTML40, AttrCheckImpl.TFRAME), // TABLE
           new Attribute("frameborder", (short) (Dict.VERS_FRAMESET | Dict.VERS_IFRAME), AttrCheckImpl.FBORDER), // 0 or
-                                                                                                                // 1
+          // 1
           new Attribute("framespacing", Dict.VERS_PROPRIETARY, AttrCheckImpl.NUMBER), // pixel value
           new Attribute("gridx", Dict.VERS_PROPRIETARY, AttrCheckImpl.NUMBER), // TABLE Adobe golive
           new Attribute("gridy", Dict.VERS_PROPRIETARY, AttrCheckImpl.NUMBER), // TABLE Adobe golive

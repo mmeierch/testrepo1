@@ -16,7 +16,7 @@ import javax.xml.parsers.ParserConfigurationException;
  * 
  * @author zisch
  */
-public final class HtmlDocumentBuilderFactory extends DocumentBuilderFactory {
+public class HtmlDocumentBuilderFactory extends DocumentBuilderFactory {
 
   private static final String ATTR_NAME_BASE = "https://dals.ch/ns/ch.dals.lib.xml.html.HtmlDocumentBuilderFactory/";
 

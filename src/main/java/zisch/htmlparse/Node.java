@@ -51,7 +51,7 @@
  *  acknowledgment is not required but would be appreciated.
  *
  */
-package ch.dals.endorsed.jtidy;
+package zisch.htmlparse;
 
 
 import org.xml.sax.SAXException;
@@ -66,9 +66,9 @@ import org.xml.sax.SAXException;
  * @author Dave Raggett <a href="mailto:dsr@w3.org">dsr@w3.org </a>
  * @author Andy Quick <a href="mailto:ac.quick@sympatico.ca">ac.quick@sympatico.ca </a> (translation to Java)
  * @author Fabrizio Giustina
- * @version $Revision: 930 $ ($Author: aditsu $)
+ * @author Zisch
  */
-public class Node {
+final class Node {
 
   /**
    * node type: root.
@@ -1292,6 +1292,7 @@ public class Node {
           adapter = new DOMProcessingInstructionImpl(this);
           break;
         default:
+          // FIXME: this should probably never happen!!??
           adapter = new DOMNodeImpl(this);
       }
     }

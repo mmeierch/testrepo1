@@ -119,6 +119,9 @@ public class HtmlDocumentBuilderUTest {
         break;
 
       case Node.DOCUMENT_NODE:
+        formatDocumentNode(out, indent);
+        break;
+
       case Node.ELEMENT_NODE:
         formatElementNode(out, rootNode, indent);
         break;
@@ -140,25 +143,33 @@ public class HtmlDocumentBuilderUTest {
   private static void formatDtdNode (final Writer out, final Node rootNode, final String indent) throws IOException {
     final DocumentType dtd = (DocumentType) rootNode;
     out.write(indent);
-    out.write("#dtd: { name: ");
+    out.write("#dtd: [ name: ");
     out.write(escapeValue(dtd.getName()));
     out.write(", public: ");
     out.write(escapeValue(dtd.getPublicId()));
     out.write(", system: ");
     out.write(escapeValue(dtd.getSystemId()));
-    out.write(" }\n");
+    out.write(" ]\n");
+  }
+
+  private static void formatDocumentNode (final Writer out, final String indent) throws IOException {
+    out.write(indent);
+    out.write("#document:\n");
   }
 
   private static void formatElementNode (final Writer out, final Node rootNode, final String indent) throws IOException {
     out.write(indent);
-    out.write(rootNode.getNodeName());
+    out.write("{");
+    out.write(rootNode.getNamespaceURI());
+    out.write("}");
+    out.write(rootNode.getLocalName());
     out.write(":");
     if (rootNode.getNodeType() == Node.ELEMENT_NODE) {
       final Element el = (Element) rootNode;
       final NamedNodeMap attrs = el.getAttributes();
       final int len = attrs.getLength();
       if (len > 0) {
-        out.write(" { ");
+        out.write(" [ ");
         String delim = "";
         for (int i = 0; i < len; i++) {
           final Attr attr = (Attr) attrs.item(i);
@@ -168,7 +179,7 @@ public class HtmlDocumentBuilderUTest {
           out.write(escapeValue(attr.getValue()));
           delim = ", ";
         }
-        out.write(" }");
+        out.write(" ]");
       }
     }
     out.write("\n");
