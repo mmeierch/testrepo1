@@ -53,62 +53,70 @@
  */
 package ch.dals.endorsed.jtidy;
 
+
 /**
  * Input Stream.
+ * 
  * @author Dave Raggett <a href="mailto:dsr@w3.org">dsr@w3.org </a>
  * @author Andy Quick <a href="mailto:ac.quick@sympatico.ca">ac.quick@sympatico.ca </a> (translation to Java)
  * @author Fabrizio Giustina
  * @version $Revision: 587 $ ($Author: fgiust $)
  */
 
-public interface StreamIn
-{
+public interface StreamIn {
 
-    /**
-     * end of stream char.
-     */
-    int END_OF_STREAM = -1;
+  /**
+   * end of stream char.
+   */
+  int END_OF_STREAM = -1;
 
-    /**
-     * Getter for <code>curcol</code>.
-     * @return Returns the curcol.
-     */
-    int getCurcol();
+  /**
+   * Getter for <code>curcol</code>.
+   * 
+   * @return Returns the curcol.
+   */
+  int getCurcol ();
 
-    /**
-     * Getter for <code>curline</code>.
-     * @return Returns the curline.
-     */
-    int getCurline();
+  /**
+   * Getter for <code>curline</code>.
+   * 
+   * @return Returns the curline.
+   */
+  int getCurline ();
 
-    /**
-     * reads a char from the stream.
-     * @return char
-     */
-    int readCharFromStream();
+  /**
+   * reads a char from the stream.
+   * 
+   * @return char
+   */
+  int readCharFromStream ();
 
-    /**
-     * Read a char.
-     * @return char
-     */
-    int readChar();
+  /**
+   * Read a char.
+   * 
+   * @return char
+   */
+  int readChar ();
 
-    /**
-     * Unget a char.
-     * @param c char
-     */
-    void ungetChar(int c);
+  /**
+   * Unget a char.
+   * 
+   * @param c char
+   */
+  void ungetChar (int c);
 
-    /**
-     * Has end of stream been reached?
-     * @return <code>true</code> if end of stream has been reached
-     */
-    boolean isEndOfStream();
+  /**
+   * Has end of stream been reached?
+   * 
+   * @return <code>true</code> if end of stream has been reached
+   */
+  boolean isEndOfStream ();
 
-    /**
-     * Setter for lexer instance (needed for error reporting).
-     * @param lexer Lexer
-     */
-    void setLexer(Lexer lexer);
+  /**
+   * Setter for lexer instance (needed for error reporting).
+   * 
+   * @param lexer Lexer
+   */
+  void setLexer (Lexer lexer);
 
 }

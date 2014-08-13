@@ -60,160 +60,117 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 
+import org.xml.sax.SAXParseException;
+
 
 /**
- * StreamIn Implementation using java writers.
+ * Input stream wrapper for the {@link Lexer}.
  * 
- * @author Fabrizio Giustina
  * @author Zisch
  */
-final class StreamInJavaImpl implements StreamIn {
+final class StreamWrapper {
+  /** End of stream marker. */
+  static final int END_OF_STREAM = -1;
 
-  /**
-   * number of characters kept in buffer.
-   */
+  /** Number of characters kept in buffer. */
   private static final int CHARBUF_SIZE = 16;
 
-  /**
-   * character buffer.
-   */
-  private int[] charbuf = new int[CHARBUF_SIZE];
+  /** Character buffer. */
+  private final int[] mCharbuf = new int[CHARBUF_SIZE];
 
-  /**
-   * actual position in buffer.
-   */
-  private int bufpos;
+  /** Actual position in buffer. */
+  private int mBufpos = 0;
 
-  /**
-   * Java input stream reader.
-   */
-  private Reader reader;
+  private final String mPublicId;
 
-  /**
-   * has end of stream been reached?
-   */
-  private boolean endOfStream;
+  private final String mSystemId;
 
-  /**
-   * Is char pushed?
-   */
-  private boolean pushed;
+  /** Java input stream reader. */
+  private final Reader mReader;
 
-  /**
-   * current column number.
-   */
-  private int curcol;
+  /** Has end of stream been reached? */
+  private boolean mEndOfStream = false;
 
-  /**
-   * last column.
-   */
-  private int lastcol;
+  /** Has a char been pushed? */
+  private boolean mPushed = false;
 
-  /**
-   * current line number.
-   */
-  private int curline;
+  /** Current column number. */
+  private int mCurcol = 1;
 
-  /**
-   * tab size in chars.
-   */
-  private int tabsize;
+  /** Last column. */
+  private int mLastcol;
 
-  private int tabs;
+  /** Current line number. */
+  private int mCurline = 1;
 
-  /**
-   * Instantiates a new StreamInJavaImpl.
-   * 
-   * @param stream
-   * @param encoding
-   * @param tabsize
-   * @throws UnsupportedEncodingException
-   */
-  protected StreamInJavaImpl (InputStream stream, String encoding, int tabsize) throws UnsupportedEncodingException {
-    reader = new InputStreamReader(stream, encoding);
-    this.pushed = false;
-    this.tabsize = tabsize;
-    this.curline = 1;
-    this.curcol = 1;
-    this.endOfStream = false;
+  /** Tab size in chars. */
+  private final int mTabsize;
+
+  private int mTabs;
+
+  StreamWrapper (final String publicId, final String systemId, final InputStream stream, final String encoding,
+          final int tabsize) throws UnsupportedEncodingException {
+    // FIXME: check 'stream' and 'encoding' args!
+    this(publicId, systemId, new InputStreamReader(stream, encoding), tabsize);
   }
 
-  /**
-   * Instantiates a new StreamInJavaImpl.
-   * 
-   * @param stream
-   * @param encoding
-   * @param tabsize
-   */
-  protected StreamInJavaImpl (Reader reader, int tabsize) {
-    this.reader = reader;
-    this.pushed = false;
-    this.tabsize = tabsize;
-    this.curline = 1;
-    this.curcol = 1;
-    this.endOfStream = false;
+  StreamWrapper (final String publicId, final String systemId, final Reader reader, final int tabsize) {
+    // FIXME: check args!
+    mPublicId = publicId;
+    mSystemId = systemId;
+    mReader = reader;
+    mTabsize = tabsize;
   }
 
-  /**
-   * @see StreamIn#readCharFromStream()
-   */
-  public int readCharFromStream () {
-    int c;
+  int readCharFromStream () throws SAXParseException {
     try {
-      c = reader.read();
+      final int c = mReader.read();
       if (c < 0) {
-        endOfStream = true;
+        mEndOfStream = true;
       }
-
-    } catch (IOException e) {
-      // @todo how to handle?
-      endOfStream = true;
-      return END_OF_STREAM;
+      return c;
+    } catch (final IOException exc) {
+      throw createParseException("IOException while reading: " + exc, exc);
     }
-
-    return c;
   }
 
-  /**
-   * @see StreamIn#readChar()
-   */
-  public int readChar () {
+  public int readChar () throws SAXParseException {
     int c;
 
-    if (this.pushed) {
-      c = this.charbuf[--(this.bufpos)];
-      if ((this.bufpos) == 0) {
-        this.pushed = false;
+    if (mPushed) {
+      c = mCharbuf[--(mBufpos)];
+      if ((mBufpos) == 0) {
+        mPushed = false;
       }
 
       if (c == '\n') {
-        this.curcol = 1;
-        this.curline++;
+        mCurcol = 1;
+        mCurline++;
         return c;
       }
 
-      this.curcol++;
+      mCurcol++;
       return c;
     }
 
-    this.lastcol = this.curcol;
+    mLastcol = mCurcol;
 
-    if (this.tabs > 0) {
-      this.curcol++;
-      this.tabs--;
+    if (mTabs > 0) {
+      mCurcol++;
+      mTabs--;
       return ' ';
     }
 
     c = readCharFromStream();
 
     if (c < 0) {
-      endOfStream = true;
+      mEndOfStream = true;
       return END_OF_STREAM;
     }
 
     if (c == '\n') {
-      this.curcol = 1;
-      this.curline++;
+      mCurcol = 1;
+      mCurline++;
       return c;
     } else if (c == '\r') // \r\n
     {
@@ -224,47 +181,41 @@ final class StreamInJavaImpl implements StreamIn {
         }
         c = '\n';
       }
-      this.curcol = 1;
-      this.curline++;
+      mCurcol = 1;
+      mCurline++;
       return c;
     }
 
     if (c == '\t') {
-      this.tabs = this.tabsize - ((this.curcol - 1) % this.tabsize) - 1;
-      this.curcol++;
+      mTabs = mTabsize - ((mCurcol - 1) % mTabsize) - 1;
+      mCurcol++;
       c = ' ';
       return c;
     }
 
-    this.curcol++;
+    mCurcol++;
 
     return c;
   }
 
-  /**
-   * @see StreamIn#ungetChar(int)
-   */
   public void ungetChar (int c) {
-    this.pushed = true;
-    if (this.bufpos >= CHARBUF_SIZE) {
+    mPushed = true;
+    if (mBufpos >= CHARBUF_SIZE) {
       // pop last element
-      System.arraycopy(this.charbuf, 0, this.charbuf, 1, CHARBUF_SIZE - 1);
-      this.bufpos--;
+      System.arraycopy(mCharbuf, 0, mCharbuf, 1, CHARBUF_SIZE - 1);
+      mBufpos--;
     }
-    this.charbuf[(this.bufpos)++] = c;
+    mCharbuf[(mBufpos)++] = c;
 
     if (c == '\n') {
-      --this.curline;
+      --mCurline;
     }
 
-    this.curcol = this.lastcol;
+    mCurcol = mLastcol;
   }
 
-  /**
-   * @see StreamIn#isEndOfStream()
-   */
   public boolean isEndOfStream () {
-    return endOfStream;
+    return mEndOfStream;
   }
 
   /**
@@ -273,7 +224,7 @@ final class StreamInJavaImpl implements StreamIn {
    * @return Returns the curcol.
    */
   public int getCurcol () {
-    return this.curcol;
+    return mCurcol;
   }
 
   /**
@@ -282,14 +233,10 @@ final class StreamInJavaImpl implements StreamIn {
    * @return Returns the curline.
    */
   public int getCurline () {
-    return this.curline;
+    return mCurline;
   }
 
-  /**
-   * @see StreamIn#setLexer(Lexer)
-   */
-  public void setLexer (Lexer lexer) {
-    // unused in the java implementation
+  private SAXParseException createParseException (final String msg, final Exception cause) {
+    return new SAXParseException(msg, mPublicId, mSystemId, mCurline, mCurcol, cause);
   }
-
 }

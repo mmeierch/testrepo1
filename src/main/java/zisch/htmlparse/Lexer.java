@@ -54,22 +54,25 @@
 package zisch.htmlparse;
 
 
+import java.io.PushbackReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 import org.xml.sax.SAXException;
 
+import ch.dals.endorsed.jtidy.StreamIn;
+
 
 /**
- * Lexer for html parser.
+ * HTML lexer.
  * <p>
- * Given a file stream fp it returns a sequence of tokens. GetToken(fp) gets the next token UngetToken(fp) provides one
- * level undo The tags include an attribute list: - linked list of attribute/value nodes - each node has 2
- * null-terminated strings. - entities are replaced in attribute values white space is compacted if not in preformatted
- * mode If not in preformatted mode then leading white space is discarded and subsequent white space sequences compacted
- * to single space chars. If XmlTags is no then Tag names are folded to upper case and attribute names to lower case.
- * Not yet done: - Doctype subset and marked sections
+ * Given a file stream this lexer returns a sequence of tokens. {@link #getToken(Mode)} gets the next token,
+ * {@link #ungetToken()} provides one level undo. The tags include a linked list of attribute/value nodes. - each node
+ * has 2 null-terminated strings. - entities are replaced in attribute values white space is compacted if not in
+ * preformatted mode If not in preformatted mode then leading white space is discarded and subsequent white space
+ * sequences compacted to single space chars. If XmlTags is no then Tag names are folded to upper case and attribute
+ * names to lower case. Not yet done: - Doctype subset and marked sections
  * </p>
  * 
  * @author Dave Raggett <a href="mailto:dsr@w3.org">dsr@w3.org </a>
@@ -80,24 +83,55 @@ import org.xml.sax.SAXException;
 final class Lexer {
 
   /**
-   * state: ignore whitespace.
+   * Token parsing mode.
+   * 
+   * @author zisch
    */
-  public static final short IGNORE_WHITESPACE = 0;
+  enum Mode {
+    /**
+     * Ignore whitespace. (Default mode.)
+     */
+    IGNORE_WHITESPACE,
 
-  /**
-   * state: mixed content.
-   */
-  public static final short MIXED_CONTENT = 1;
+    /**
+     * Mixed content mode for elements which don't accept PCDATA.
+     */
+    MIXED_CONTENT,
 
-  /**
-   * state: preformatted.
-   */
-  public static final short PREFORMATTED = 2;
+    /**
+     * Whitespace is preserved as is.
+     */
+    PREFORMATTED,
 
-  /**
-   * state: ignore markup.
-   */
-  public static final short IGNORE_MARKUP = 3;
+    /**
+     * For CDATA elements such as {@code <script>} or {@code <style>}.
+     */
+    IGNORE_MARKUP;
+
+    boolean preformattedOrIgnoreMarkup () {
+      return this == PREFORMATTED || this == IGNORE_MARKUP;
+    }
+  }
+
+  // /**
+  // * state: ignore whitespace.
+  // */
+  // public static final short IGNORE_WHITESPACE = 0;
+  //
+  // /**
+  // * state: mixed content.
+  // */
+  // public static final short MIXED_CONTENT = 1;
+  //
+  // /**
+  // * state: preformatted.
+  // */
+  // public static final short PREFORMATTED = 2;
+  //
+  // /**
+  // * state: ignore markup.
+  // */
+  // public static final short IGNORE_MARKUP = 3;
 
   /**
    * URI for XHTML 1.0 transitional DTD.
@@ -119,10 +153,6 @@ final class Lexer {
    */
   private static final String VOYAGER_11 = "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd";
 
-  /**
-   * URI for XHTML Basic 1.0.
-   */
-  // private static final String VOYAGER_BASIC = "http://www.w3.org/TR/xhtml-basic/xhtml-basic10.dtd";
   /**
    * xhtml namespace.
    */
@@ -212,7 +242,7 @@ final class Lexer {
   /**
    * file stream.
    */
-  protected StreamIn in;
+  private final PushbackReader in;
 
   /**
    * for accessibility errors.
@@ -628,7 +658,9 @@ final class Lexer {
    * 
    * @throws SAXException in case of errors
    */
-  public void parseEntity (final short mode) throws SAXException {
+  void parseEntity (final Mode mode) throws SAXException {
+    // FIXME: check mode != null
+
     // No longer attempts to insert missing ';' for unknown
     // entities unless one was present already, since this
     // gives unexpected results.
@@ -777,7 +809,7 @@ final class Lexer {
 
       this.lexsize = start;
 
-      if (ch == 160 && TidyUtils.toBoolean(mode & PREFORMATTED)) {
+      if (ch == 160 && mode.preformattedOrIgnoreMarkup()) {
         ch = ' ';
       }
 
@@ -1695,8 +1727,9 @@ final class Lexer {
    * 
    * @throws SAXException in case of errors
    */
-  public Node getToken (final short mode) throws SAXException {
-    short m = mode;
+  public Node getToken (final Mode mode) throws SAXException {
+    // FIXME: check mode != null
+    Mode m = mode;
     int c = 0;
     int badcomment = 0;
     // pass by reference
@@ -1727,10 +1760,10 @@ final class Lexer {
     while ((c = this.in.readChar()) != StreamIn.END_OF_STREAM) {
       // FG fix for [427846] different from tidy
       // if (this.insertspace && (!TidyUtils.toBoolean(mode & IGNORE_WHITESPACE)))
-      if (this.insertspace && m != IGNORE_WHITESPACE) {
+      if (this.insertspace && m != Mode.IGNORE_WHITESPACE) {
         addCharToLexer(' ');
       }
-      if (this.insertspace && (!TidyUtils.toBoolean(m & IGNORE_WHITESPACE))) {
+      if (this.insertspace && m != Mode.IGNORE_WHITESPACE) {
         this.waswhite = true;
         this.insertspace = false;
       }
@@ -1755,7 +1788,7 @@ final class Lexer {
           // Discard white space if appropriate.
           // Its cheaper to do this here rather than in parser methods for elements that
           // don't have mixed content.
-          if (TidyUtils.isWhite((char) c) && (m == IGNORE_WHITESPACE) && this.lexsize == this.txtstart + 1) {
+          if (TidyUtils.isWhite((char) c) && (m == Mode.IGNORE_WHITESPACE) && this.lexsize == this.txtstart + 1) {
             --this.lexsize;
             this.waswhite = false;
             this.lines = this.in.getCurline();
@@ -1771,7 +1804,7 @@ final class Lexer {
           if (TidyUtils.isWhite((char) c)) {
             // was previous char white?
             if (this.waswhite) {
-              if (m != PREFORMATTED && m != IGNORE_MARKUP) {
+              if (!m.preformattedOrIgnoreMarkup()) {
                 --this.lexsize;
                 this.lines = this.in.getCurline();
                 this.columns = this.in.getCurcol();
@@ -1780,19 +1813,19 @@ final class Lexer {
               // prev char wasn't white
               this.waswhite = true;
 
-              if (m != PREFORMATTED && m != IGNORE_MARKUP && c != ' ') {
+              if (!m.preformattedOrIgnoreMarkup() && c != ' ') {
                 changeChar((byte) ' ');
               }
             }
 
             continue;
-          } else if (c == '&' && m != IGNORE_MARKUP) {
+          } else if (c == '&' && m != Mode.IGNORE_MARKUP) {
             parseEntity(m);
           }
 
           // this is needed to avoid trimming trailing whitespace
-          if (m == IGNORE_WHITESPACE) {
-            m = MIXED_CONTENT;
+          if (m == Mode.IGNORE_WHITESPACE) {
+            m = Mode.MIXED_CONTENT;
           }
 
           this.waswhite = false;
