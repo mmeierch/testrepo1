@@ -65,19 +65,16 @@ import ch.dals.endorsed.jtidy.StreamIn;
 
 
 /**
- * HTML lexer.
+ * HTML lexer. Given a file stream this lexer returns a sequence of tokens. {@link #getToken(Mode)} gets the next token,
+ * {@link #ungetToken()} provides one level undo.
  * <p>
- * Given a file stream this lexer returns a sequence of tokens. {@link #getToken(Mode)} gets the next token,
- * {@link #ungetToken()} provides one level undo. The tags include a linked list of attribute/value nodes. - each node
- * has 2 null-terminated strings. - entities are replaced in attribute values white space is compacted if not in
- * preformatted mode If not in preformatted mode then leading white space is discarded and subsequent white space
- * sequences compacted to single space chars. If XmlTags is no then Tag names are folded to upper case and attribute
- * names to lower case. Not yet done: - Doctype subset and marked sections
- * </p>
+ * The tags include a linked list of attribute/value nodes. Entities are replaced in attribute values, whitespace is
+ * compacted if not in {@linkplain Mode#PREFORMATTED preformatted mode}. If not in preformatted mode then leading
+ * whitespace is discarded and subsequent whitespace sequences compacted to single space chars.
+ * <p>
+ * If {@link Configuration#xmlTags} is {@code false} then Tag names are folded to upper case and attribute names to
+ * lower case.
  * 
- * @author Dave Raggett <a href="mailto:dsr@w3.org">dsr@w3.org </a>
- * @author Andy Quick <a href="mailto:ac.quick@sympatico.ca">ac.quick@sympatico.ca </a> (translation to Java)
- * @author Fabrizio Giustina
  * @author Zisch
  */
 final class Lexer {
@@ -113,26 +110,6 @@ final class Lexer {
     }
   }
 
-  // /**
-  // * state: ignore whitespace.
-  // */
-  // public static final short IGNORE_WHITESPACE = 0;
-  //
-  // /**
-  // * state: mixed content.
-  // */
-  // public static final short MIXED_CONTENT = 1;
-  //
-  // /**
-  // * state: preformatted.
-  // */
-  // public static final short PREFORMATTED = 2;
-  //
-  // /**
-  // * state: ignore markup.
-  // */
-  // public static final short IGNORE_MARKUP = 3;
-
   /**
    * URI for XHTML 1.0 transitional DTD.
    */
@@ -154,271 +131,140 @@ final class Lexer {
   private static final String VOYAGER_11 = "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd";
 
   /**
-   * xhtml namespace.
+   * XHTML namespace.
    */
   private static final String XHTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 
   /**
-   * lists all the known versions.
+   * All known HTML versions.
    */
-  private static final Lexer.W3CVersionInfo[] W3CVERSION = {
-          new W3CVersionInfo("HTML 4.01", "XHTML 1.0 Strict", VOYAGER_STRICT, Dict.VERS_HTML40_STRICT),
-          new W3CVersionInfo("HTML 4.01 Transitional", "XHTML 1.0 Transitional", VOYAGER_LOOSE, Dict.VERS_HTML40_LOOSE),
-          new W3CVersionInfo("HTML 4.01 Frameset", "XHTML 1.0 Frameset", VOYAGER_FRAMESET, Dict.VERS_FRAMESET),
-          new W3CVersionInfo("HTML 4.0", "XHTML 1.0 Strict", VOYAGER_STRICT, Dict.VERS_HTML40_STRICT),
-          new W3CVersionInfo("HTML 4.0 Transitional", "XHTML 1.0 Transitional", VOYAGER_LOOSE, Dict.VERS_HTML40_LOOSE),
-          new W3CVersionInfo("HTML 4.0 Frameset", "XHTML 1.0 Frameset", VOYAGER_FRAMESET, Dict.VERS_FRAMESET),
-          new W3CVersionInfo("HTML 3.2", "XHTML 1.0 Transitional", VOYAGER_LOOSE, Dict.VERS_HTML32),
-          new W3CVersionInfo("HTML 3.2 Final", "XHTML 1.0 Transitional", VOYAGER_LOOSE, Dict.VERS_HTML32),
-          new W3CVersionInfo("HTML 3.2 Draft", "XHTML 1.0 Transitional", VOYAGER_LOOSE, Dict.VERS_HTML32),
-          new W3CVersionInfo("HTML 2.0", "XHTML 1.0 Strict", VOYAGER_STRICT, Dict.VERS_HTML20),
-          new W3CVersionInfo("HTML 4.01", "XHTML 1.1", VOYAGER_STRICT, Dict.VERS_XHTML11) };
+  private static final Lexer.W3CVersionInfo[] W3CVERSION = { //
+          new W3CVersionInfo("HTML 4.01", "XHTML 1.0 Strict", VOYAGER_STRICT, Dict.VERS_HTML40_STRICT), //
+          new W3CVersionInfo("HTML 4.01 Transitional", "XHTML 1.0 Transitional", VOYAGER_LOOSE, Dict.VERS_HTML40_LOOSE), //
+          new W3CVersionInfo("HTML 4.01 Frameset", "XHTML 1.0 Frameset", VOYAGER_FRAMESET, Dict.VERS_FRAMESET), //
+          new W3CVersionInfo("HTML 4.0", "XHTML 1.0 Strict", VOYAGER_STRICT, Dict.VERS_HTML40_STRICT), //
+          new W3CVersionInfo("HTML 4.0 Transitional", "XHTML 1.0 Transitional", VOYAGER_LOOSE, Dict.VERS_HTML40_LOOSE), //
+          new W3CVersionInfo("HTML 4.0 Frameset", "XHTML 1.0 Frameset", VOYAGER_FRAMESET, Dict.VERS_FRAMESET), //
+          new W3CVersionInfo("HTML 3.2", "XHTML 1.0 Transitional", VOYAGER_LOOSE, Dict.VERS_HTML32), //
+          new W3CVersionInfo("HTML 3.2 Final", "XHTML 1.0 Transitional", VOYAGER_LOOSE, Dict.VERS_HTML32), //
+          new W3CVersionInfo("HTML 3.2 Draft", "XHTML 1.0 Transitional", VOYAGER_LOOSE, Dict.VERS_HTML32), //
+          new W3CVersionInfo("HTML 2.0", "XHTML 1.0 Strict", VOYAGER_STRICT, Dict.VERS_HTML20), //
+          new W3CVersionInfo("HTML 4.01", "XHTML 1.1", VOYAGER_STRICT, Dict.VERS_XHTML11) //
+  };
 
-  /**
-   * getToken state: content.
-   */
-  private static final short LEX_CONTENT = 0;
+  private enum State {
+    CONTENT, GT, ENDTAG, STARTTAG, COMMENT, DOCTYPE, PROCINSTR, CDATA, SECTION, ASP, JSTE, PHP, XMLDECL
+  }
 
-  /**
-   * getToken state: gt.
-   */
-  private static final short LEX_GT = 1;
-
-  /**
-   * getToken state: endtag.
-   */
-  private static final short LEX_ENDTAG = 2;
-
-  /**
-   * getToken state: start tag.
-   */
-  private static final short LEX_STARTTAG = 3;
-
-  /**
-   * getToken state: comment.
-   */
-  private static final short LEX_COMMENT = 4;
-
-  /**
-   * getToken state: doctype.
-   */
-  private static final short LEX_DOCTYPE = 5;
-
-  /**
-   * getToken state: procinstr.
-   */
-  private static final short LEX_PROCINSTR = 6;
-
-  /**
-   * getToken state: cdata.
-   */
-  private static final short LEX_CDATA = 8;
-
-  /**
-   * getToken state: section.
-   */
-  private static final short LEX_SECTION = 9;
-
-  /**
-   * getToken state: asp.
-   */
-  private static final short LEX_ASP = 10;
-
-  /**
-   * getToken state: jste.
-   */
-  private static final short LEX_JSTE = 11;
-
-  /**
-   * getToken state: php.
-   */
-  private static final short LEX_PHP = 12;
-
-  /**
-   * getToken state: xml declaration.
-   */
-  private static final short LEX_XMLDECL = 13;
-
-  /**
-   * file stream.
-   */
   private final PushbackReader in;
 
-  /**
-   * for accessibility errors.
-   */
-  protected short badAccess;
+  /** Configuration. */
+  private final Configuration configuration;
+
+  // /** For accessibility errors. */
+  // private int badAccess;
+  //
+  // /** For bad style errors. */
+  // private int badLayout;
+  //
+  // /** For bad char encodings. */
+  // private int badChars;
+  //
+  // /** For mismatched/mispositioned form tags. */
+  // private int badForm;
+  //
+  // /** Count of warnings in this document. */
+  // private int warnings;
+  //
+  // /** Count of errors. */
+  // private int errors;
+
+  /** Lines seen. */
+  private int lines = 1;
+
+  /** Current column at start of current token. */
+  private int columns = 1;
+
+  /** Used to collapse contiguous white space. */
+  private boolean waswhite;
+
+  /** {@code true} after token has been pushed back. */
+  private boolean pushed;
+
+  /** If space is moved after end tag. */
+  private boolean insertspace;
+
+  /** Netscape compatibility. */
+  private boolean excludeBlocks;
+
+  /** {@code true} if moved out of table. */
+  private boolean exiled;
+
+  /** {@code true} if {@code xmlns} attribute on {@code html} element. */
+  private boolean isvoyager;
+
+  /** Bit vector of HTML versions. */
+  private int versions = (Dict.VERS_ALL | Dict.VERS_PROPRIETARY);
+
+  /** Version as given by doctype (if any). */
+  private int doctype = Dict.VERS_UNKNOWN;
+
+  /** Set if html or PUBLIC is missing. */
+  private boolean badDoctype;
+
+  /** Start of current node. */
+  private int txtstart;
+
+  /** End of current node. */
+  private int txtend;
+
+  /** State of lexer's finite state machine. */
+  private State state = State.CONTENT;
+
+  /** Current node. */
+  private Node token;
 
   /**
-   * for bad style errors.
+   * Lexer byte buffer of UTF-8 chars. Parse tree nodes span onto this buffer which contains the concatenated text
+   * contents of all of the elements. Lexsize must be reset for each file.
    */
-  protected short badLayout;
+  private byte[] lexbuf;
 
-  /**
-   * for bad char encodings.
-   */
-  protected short badChars;
+  /** Allocated. (??) */
+  private int lexlength;
 
-  /**
-   * for mismatched/mispositioned form tags.
-   */
-  protected short badForm;
+  /** Used. (??) */
+  private int lexsize;
 
-  /**
-   * count of warnings in this document.
-   */
-  protected short warnings;
+  /** Inline stack for compatibility with Mosaic. For deferring text node. */
+  private Node inode;
 
-  /**
-   * count of errors.
-   */
-  protected short errors;
+  /** For inferring inline tags. */
+  private int insert = -1;
 
-  /**
-   * lines seen.
-   */
-  protected int lines;
+  /** Inline stack. */
+  private final Stack<IStack> istack = new Stack<IStack>();
 
-  /**
-   * at start of current token.
-   */
-  protected int columns;
+  /** Start of frame. */
+  private int istackbase;
 
-  /**
-   * used to collapse contiguous white space.
-   */
-  protected boolean waswhite;
+  /** Used for cleaning up presentation markup. */
+  private Style styles;
 
-  /**
-   * true after token has been pushed back.
-   */
-  protected boolean pushed;
+  /** Already seen end body tag? */
+  private boolean seenEndBody;
 
-  /**
-   * when space is moved after end tag.
-   */
-  protected boolean insertspace;
+  /** Already seen end html tag? */
+  private boolean seenEndHtml;
 
-  /**
-   * Netscape compatibility.
-   */
-  protected boolean excludeBlocks;
+  // /** Report. */
+  // protected Report report;
 
-  /**
-   * true if moved out of table.
-   */
-  protected boolean exiled;
-
-  /**
-   * true if xmlns attribute on html element.
-   */
-  protected boolean isvoyager;
-
-  /**
-   * bit vector of HTML versions.
-   */
-  protected short versions;
-
-  /**
-   * version as given by doctype (if any).
-   */
-  protected int doctype;
-
-  /**
-   * set if html or PUBLIC is missing.
-   */
-  protected boolean badDoctype;
-
-  /**
-   * start of current node.
-   */
-  protected int txtstart;
-
-  /**
-   * end of current node.
-   */
-  protected int txtend;
-
-  /**
-   * state of lexer's finite state machine.
-   */
-  protected short state;
-
-  /**
-   * current node.
-   */
-  protected Node token;
-
-  /**
-   * Lexer character buffer parse tree nodes span onto this buffer which contains the concatenated text contents of all
-   * of the elements. Lexsize must be reset for each file. Byte buffer of UTF-8 chars.
-   */
-  protected byte[] lexbuf;
-
-  /**
-   * allocated.
-   */
-  protected int lexlength;
-
-  /**
-   * used.
-   */
-  protected int lexsize;
-
-  /**
-   * Inline stack for compatibility with Mosaic. For deferring text node.
-   */
-  protected Node inode;
-
-  /**
-   * for inferring inline tags.
-   */
-  protected int insert;
-
-  /**
-   * stack.
-   */
-  protected Stack<IStack> istack;
-
-  /**
-   * start of frame.
-   */
-  protected int istackbase;
-
-  /**
-   * used for cleaning up presentation markup.
-   */
-  protected Style styles;
-
-  /**
-   * configuration.
-   */
-  protected Configuration configuration;
-
-  /**
-   * already seen end body tag?
-   */
-  protected boolean seenEndBody;
-
-  /**
-   * already seen end html tag?
-   */
-  protected boolean seenEndHtml;
-
-  /**
-   * report.
-   */
-  protected Report report;
-
-  /**
-   * Root node is saved here.
-   */
+  /** The root node. */
   protected Node root;
 
-  /**
-   * node list.
-   */
-  private List<Node> nodeList;
+  /** Node list. */
+  private final List<Node> nodeList = new ArrayList<Node>();
 
   /**
    * Instantiates a new Lexer.
@@ -427,28 +273,19 @@ final class Lexer {
    * @param configuration configuation instance
    * @param report report instance, for reporting errors
    */
-  public Lexer (StreamIn in, Configuration configuration, Report report) {
-    this.report = report;
+  public Lexer (final PushbackReader in, final Configuration configuration) {
     this.in = in;
-    this.lines = 1;
-    this.columns = 1;
-    this.state = LEX_CONTENT;
-    this.versions = (Dict.VERS_ALL | Dict.VERS_PROPRIETARY);
-    this.doctype = Dict.VERS_UNKNOWN;
-    this.insert = -1;
-    this.istack = new Stack<IStack>();
     this.configuration = configuration;
-    this.nodeList = new ArrayList<Node>();
   }
 
   /**
    * Creates a new node and add it to nodelist.
    * 
-   * @return Node
+   * @return the newly created {@code Node}
    */
   public Node newNode () {
-    Node node = new Node();
-    this.nodeList.add(node);
+    final Node node = new Node();
+    nodeList.add(node);
     return node;
   }
 
@@ -463,7 +300,7 @@ final class Lexer {
    * @param end end position
    * @return Node
    */
-  public Node newNode (short type, byte[] textarray, int start, int end) {
+  public Node newNode (final Node.Type type, final byte[] textarray, final int start, final int end) {
     Node node = new Node(type, textarray, start, end);
     this.nodeList.add(node);
     return node;
@@ -3567,37 +3404,16 @@ final class Lexer {
   /**
    * document type.
    */
-  private static class W3CVersionInfo {
+  private static final class W3CVersionInfo {
+    private final String name;
 
-    /**
-     * name.
-     */
-    String name;
+    private final String voyagerName;
 
-    /**
-     * voyager name.
-     */
-    String voyagerName;
+    private final String profile;
 
-    /**
-     * profile.
-     */
-    String profile;
+    private final int code;
 
-    /**
-     * code.
-     */
-    short code;
-
-    /**
-     * Instantiates a new W3CVersionInfo.
-     * 
-     * @param name version name
-     * @param voyagerName voyager (xhtml) name
-     * @param profile VOYAGER_STRICT | VOYAGER_LOOSE | VOYAGER_FRAMESET
-     * @param code unique code for this version info
-     */
-    public W3CVersionInfo (String name, String voyagerName, String profile, short code) {
+    private W3CVersionInfo (final String name, final String voyagerName, final String profile, final short code) {
       this.name = name;
       this.voyagerName = voyagerName;
       this.profile = profile;

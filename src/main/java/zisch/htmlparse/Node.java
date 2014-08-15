@@ -69,235 +69,100 @@ import org.xml.sax.SAXException;
  * @author Zisch
  */
 final class Node {
+  enum Type {
+    ROOT_NODE, DOCTYPE_TAG, COMMENT_TAG, PROC_INS_TAG, TEXT_NODE, START_TAG, END_TAG, START_END_TAG, CDATA_TAG,
+    SECTION_TAG, ASP_TAG, JSTE_TAG, PHP_TAG, XML_DECL;
+  }
 
-  /**
-   * node type: root.
-   */
-  public static final short ROOT_NODE = 0;
+  /** Parent node. */
+  private Node parent;
 
-  /**
-   * node type: doctype.
-   */
-  public static final short DOCTYPE_TAG = 1;
+  /** Previous node. */
+  private Node prev;
 
-  /**
-   * node type: comment.
-   */
-  public static final short COMMENT_TAG = 2;
+  /** Next node. */
+  private Node next;
 
-  /**
-   * node type: .
-   */
-  public static final short PROC_INS_TAG = 3;
+  /** Last node. */
+  private Node last;
 
-  /**
-   * node type: text.
-   */
-  public static final short TEXT_NODE = 4;
+  /** Start of span onto text array. */
+  private int start;
 
-  /**
-   * Start tag.
-   */
-  public static final short START_TAG = 5;
+  /** End of span onto text array. */
+  private int end;
 
-  /**
-   * End tag.
-   */
-  public static final short END_TAG = 6;
+  /** The text array. */
+  private byte[] textarray;
 
-  /**
-   * Start of an end tag.
-   */
-  public static final short START_END_TAG = 7;
+  /** Node type. */
+  private Type type;
 
-  /**
-   * node type: CDATA.
-   */
-  public static final short CDATA_TAG = 8;
+  /** {@code true} if closed by explicit end tag. */
+  private boolean closed;
 
-  /**
-   * node type: section tag.
-   */
-  public static final short SECTION_TAG = 9;
+  /** {@code true} if inferred. */
+  private boolean implicit;
 
-  /**
-   * node type: asp tag.
-   */
-  public static final short ASP_TAG = 10;
+  /** {@code true} if followed by a line break. */
+  private boolean linebreak;
 
-  /**
-   * node type: jste tag.
-   */
-  public static final short JSTE_TAG = 11;
+  /** Old tag when it was changed. */
+  private Dict was;
 
-  /**
-   * node type: php tag.
-   */
-  public static final short PHP_TAG = 12;
+  /** Tag's dictionary definition. */
+  private Dict tag;
 
-  /**
-   * node type: doctype.
-   */
-  public static final short XML_DECL = 13;
+  /** Tag name. */
+  private String element;
 
-  /**
-   * Description for all the node types. Used in toString.
-   */
-  private static final String[] NODETYPE_STRING = { "RootNode", "DocTypeTag", "CommentTag", "ProcInsTag", "TextNode",
-          "StartTag", "EndTag", "StartEndTag", "SectionTag", "AspTag", "PhpTag", "XmlDecl" };
+  /** Attribute/Value linked list. */
+  private AttVal attributes;
 
-  /**
-   * parent node.
-   */
-  protected Node parent;
-
-  /**
-   * pevious node.
-   */
-  protected Node prev;
-
-  /**
-   * next node.
-   */
-  protected Node next;
-
-  /**
-   * last node.
-   */
-  protected Node last;
-
-  /**
-   * start of span onto text array.
-   */
-  protected int start;
-
-  /**
-   * end of span onto text array.
-   */
-  protected int end;
-
-  /**
-   * the text array.
-   */
-  protected byte[] textarray;
-
-  /**
-   * TextNode, StartTag, EndTag etc.
-   */
-  protected short type;
-
-  /**
-   * true if closed by explicit end tag.
-   */
-  protected boolean closed;
-
-  /**
-   * true if inferred.
-   */
-  protected boolean implicit;
-
-  /**
-   * true if followed by a line break.
-   */
-  protected boolean linebreak;
-
-  /**
-   * old tag when it was changed.
-   */
-  protected Dict was;
-
-  /**
-   * tag's dictionary definition.
-   */
-  protected Dict tag;
-
-  /**
-   * Tag name.
-   */
-  protected String element;
-
-  /**
-   * Attribute/Value linked list.
-   */
-  protected AttVal attributes;
-
-  /**
-   * Contained node.
-   */
-  protected Node content;
-
-  /**
-   * DOM adapter.
-   */
-  protected org.w3c.dom.Node adapter;
+  /** Contained node. */
+  private Node content;
 
   /**
    * Instantiates a new text node.
    */
-  public Node () {
-    this(TEXT_NODE, null, 0, 0);
+  Node () {
+    this(Type.TEXT_NODE, null, 0, 0);
   }
 
   /**
    * Instantiates a new node.
    * 
-   * @param type node type: Node.ROOT_NODE | Node.DOCTYPE_TAG | Node.COMMENT_TAG | Node.PROC_INS_TAG | Node.TEXT_NODE |
-   *          Node.START_TAG | Node.END_TAG | Node.START_END_TAG | Node.CDATA_TAG | Node.SECTION_TAG | Node. ASP_TAG |
-   *          Node.JSTE_TAG | Node.PHP_TAG | Node.XML_DECL
+   * @param type node type
    * @param textarray array of bytes contained in the Node
    * @param start start position
    * @param end end position
    */
-  public Node (short type, byte[] textarray, int start, int end) {
-    this.parent = null;
-    this.prev = null;
-    this.next = null;
-    this.last = null;
+  Node (final Type type, final byte[] textarray, final int start, final int end) {
+    this.type = type;
+    this.textarray = textarray;
     this.start = start;
     this.end = end;
-    this.textarray = textarray;
-    this.type = type;
-    this.closed = false;
-    this.implicit = false;
-    this.linebreak = false;
-    this.was = null;
-    this.tag = null;
-    this.element = null;
-    this.attributes = null;
-    this.content = null;
   }
 
   /**
    * Instantiates a new node.
    * 
-   * @param type node type: Node.ROOT_NODE | Node.DOCTYPE_TAG | Node.COMMENT_TAG | Node.PROC_INS_TAG | Node.TEXT_NODE |
-   *          Node.START_TAG | Node.END_TAG | Node.START_END_TAG | Node.CDATA_TAG | Node.SECTION_TAG | Node. ASP_TAG |
-   *          Node.JSTE_TAG | Node.PHP_TAG | Node.XML_DECL
+   * @param type node type
    * @param textarray array of bytes contained in the Node
    * @param start start position
    * @param end end position
    * @param element tag name
    * @param tt tag table instance
    */
-  public Node (short type, byte[] textarray, int start, int end, String element, TagTable tt) {
-    this.parent = null;
-    this.prev = null;
-    this.next = null;
-    this.last = null;
+  public Node (final Type type, final byte[] textarray, final int start, final int end, final String element,
+          final TagTable tt) {
+    this.type = type;
+    this.textarray = textarray;
     this.start = start;
     this.end = end;
-    this.textarray = textarray;
-    this.type = type;
-    this.closed = false;
-    this.implicit = false;
-    this.linebreak = false;
-    this.was = null;
-    this.tag = null;
     this.element = element;
-    this.attributes = null;
-    this.content = null;
-    if (type == START_TAG || type == START_END_TAG || type == END_TAG) {
-      tt.findTag(this);
+    if (type == Type.START_TAG || type == Type.START_END_TAG || type == Type.END_TAG) {
+      tt.findTag(this); // FIXME: what is this actually doing!??
     }
   }
 
