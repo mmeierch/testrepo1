@@ -166,6 +166,27 @@ final class Node {
     }
   }
 
+  public AttVal getAttributes () {
+    return attributes;
+  }
+
+  public byte[] getTextarray () {
+    return textarray;
+  }
+
+  public void setTextarray (final byte[] textarray) {
+    this.textarray = textarray;
+  }
+
+  public boolean updateTextarray (final byte[] expected, final byte[] updated) {
+    if (expected == textarray) {
+      textarray = updated;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   /**
    * Returns an attribute with the given name in the current node.
    * 
@@ -203,11 +224,12 @@ final class Node {
    * The same attribute name can't be used more than once in each element. Discard or join attributes according to
    * configuration.
    * 
-   * @param lexer Lexer
+   * @param config the configuration to use
+   * @param report callback to report warnings and errors
    * 
    * @throws SAXException in case of errors
    */
-  public void repairDuplicateAttributes (Lexer lexer) throws SAXException {
+  public void repairDuplicateAttributes (final Configuration config, final Report report) throws SAXException {
     AttVal attval;
 
     for (attval = this.attributes; attval != null;) {
@@ -219,7 +241,7 @@ final class Node {
                   && attval.attribute.equalsIgnoreCase(current.attribute)) {
             AttVal temp;
 
-            if ("class".equalsIgnoreCase(current.attribute) && lexer.configuration.joinClasses) {
+            if ("class".equalsIgnoreCase(current.attribute) && config.joinClasses) {
               // concatenate classes
               current.value = current.value + " " + attval.value;
 
@@ -231,7 +253,7 @@ final class Node {
                 current = current.next;
               }
 
-              lexer.report.attrError(lexer, this, attval, Report.JOINING_ATTRIBUTE);
+              report.attrError(lexer, this, attval, Report.JOINING_ATTRIBUTE);
 
               removeAttribute(attval);
               attval = temp;

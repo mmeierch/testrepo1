@@ -261,7 +261,7 @@ final class Lexer {
   // protected Report report;
 
   /** The root node. */
-  protected Node root;
+  private Node root;
 
   /** Node list. */
   private final List<Node> nodeList = new ArrayList<Node>();
@@ -301,7 +301,7 @@ final class Lexer {
    * @return Node
    */
   public Node newNode (final Node.Type type, final byte[] textarray, final int start, final int end) {
-    Node node = new Node(type, textarray, start, end);
+    final Node node = new Node(type, textarray, start, end);
     this.nodeList.add(node);
     return node;
   }
@@ -318,8 +318,9 @@ final class Lexer {
    * @param element tag name
    * @return Node
    */
-  public Node newNode (short type, byte[] textarray, int start, int end, String element) {
-    Node node = new Node(type, textarray, start, end, element, this.configuration.tt);
+  public Node newNode (final Node.Type type, final byte[] textarray, final int start, final int end,
+          final String element) {
+    final Node node = new Node(type, textarray, start, end, element, this.configuration.tt);
     this.nodeList.add(node);
     return node;
   }
@@ -333,7 +334,7 @@ final class Lexer {
   public Node cloneNode (Node node) {
     Node cnode = node.cloneNode(false);
     this.nodeList.add(cnode);
-    for (AttVal att = cnode.attributes; att != null; att = att.next) {
+    for (AttVal att = cnode.getAttributes(); att != null; att = att.next) {
       if (att.asp != null) {
         this.nodeList.add(att.asp);
       }
@@ -369,13 +370,11 @@ final class Lexer {
    * @param oldtextarray previous text array
    * @param newtextarray new text array
    */
-  protected void updateNodeTextArrays (byte[] oldtextarray, byte[] newtextarray) {
+  private void updateNodeTextArrays (final byte[] oldtextarray, final byte[] newtextarray) {
     Node node;
     for (int i = 0; i < this.nodeList.size(); i++) {
       node = this.nodeList.get(i);
-      if (node.textarray == oldtextarray) {
-        node.textarray = newtextarray;
-      }
+      node.updateTextarray(oldtextarray, newtextarray);
     }
   }
 
