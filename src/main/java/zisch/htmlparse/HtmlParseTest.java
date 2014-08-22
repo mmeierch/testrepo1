@@ -4,16 +4,12 @@
 package zisch.htmlparse;
 
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
+import java.io.PrintWriter;
 import java.io.Writer;
 
-import javax.xml.parsers.ParserConfigurationException;
-
-import junit.framework.Assert;
+import javax.xml.parsers.SAXParserFactory;
 
 import org.junit.Test;
 import org.w3c.dom.Attr;
@@ -24,86 +20,47 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 
 /**
- * Unit tests for {@link HtmlDocumentBuilder}.
+ * TODO [javadoc]: type HtmlParseTest
  * 
  * @author zisch
  */
-public class HtmlDocumentBuilderUTest {
-  private static final boolean DEBUG = true;
+public class HtmlParseTest {
+
+  private static final String FACTORY_CLASS = "org.ccil.cowan.tagsoup.jaxp.SAXFactoryImpl";
 
   /**
-   * Tests {@link HtmlDocumentBuilder#parse(InputStream)} using a Javadoc HTML page to parse.
+   * TODO [javadoc]: method testParse
    * 
-   * @throws ParserConfigurationException in case of errors
-   * @throws SAXException in case of errors
-   * @throws IOException in case of errors
+   * @throws Exception in case of errors
    */
   @Test
-  public void testParseJavadoc1 () throws ParserConfigurationException, SAXException, IOException {
-    final String actual = parseResource("javadoc1.html");
-    final String expected = loadResourceAsString("javadoc1-dom.txt");
-    Assert.assertEquals(expected, actual);
+  public void testParse () throws Exception {
+    final File srcFile = new File(HtmlParseTest.class.getResource("javadoc1.html").toURI());
+
+    System.out.println("Create SAXParserFactory ...");
+    final SAXParserFactory spf = SAXParserFactory.newInstance(FACTORY_CLASS, null);
+    System.out.println("SAXParserFactory: " + spf + " (" + spf.getClass().getName() + ")");
+    System.out.println("Parsing with SAX ...");
+    spf.newSAXParser().parse(srcFile, new DefaultHandler());
+    System.out.println("Done.");
+
+    System.out.println("Parsing with DOM ...");
+    final Sax2Dom s2d = new Sax2Dom();
+    spf.newSAXParser().parse(srcFile, s2d);
+    final Document doc = s2d.getDocument();
+    System.out.println("Done.");
+    System.out.println();
+    printDocument(doc);
   }
 
-  private static String parseResource (final String rscName) throws SAXException, IOException,
-          ParserConfigurationException {
-    final HtmlDocumentBuilderFactory dbf = new HtmlDocumentBuilderFactory();
-    final HtmlDocumentBuilder db = dbf.newDocumentBuilder();
-    final InputStream is = openResource(rscName);
-    final Document doc;
+  private static void printDocument (final Document doc) {
     try {
-      doc = db.parse(is);
-    } finally {
-      is.close();
-    }
-    final String formatted = formatDocument(doc);
-    if (DEBUG) {
-      System.out.println("---- " + rscName + " ----");
-      System.out.println(formatted);
-      System.out.println("----");
-      System.out.println();
-    }
-    return formatted;
-  }
-
-  private static String loadResourceAsString (final String rscName) {
-    try {
-      final StringBuilder sb = new StringBuilder();
-      final InputStream is = openResource(rscName);
-      try {
-        final Reader r = new InputStreamReader(is, "UTF-8");
-        final char[] buf = new char[8 * 1024];
-        for (int cnt = r.read(buf); cnt > 0; cnt = r.read(buf)) {
-          sb.append(buf, 0, cnt);
-        }
-      } finally {
-        is.close();
-      }
-      return sb.toString().replace("\r\n", "\n").replace("\r", "\n");
-    } catch (final Exception exc) {
-      throw new IllegalStateException("Failed to load resource '" + rscName + "': " + exc, exc);
-    }
-  }
-
-  private static InputStream openResource (final String rscName) {
-    final InputStream rsc = HtmlDocumentBuilderUTest.class.getResourceAsStream(rscName);
-    if (rsc == null) {
-      throw new IllegalStateException("Cannot find resource file '" + rscName + "' in package '"
-              + HtmlDocumentBuilderUTest.class.getPackage().getName() + "'.");
-    }
-    return rsc;
-  }
-
-  private static String formatDocument (final Document doc) {
-    try {
-      final StringWriter sw = new StringWriter();
+      final Writer sw = new PrintWriter(System.out);
       formatNode(sw, doc, "");
-      sw.close();
-      return sw.toString();
     } catch (final Exception exc) {
       throw new IllegalStateException("Failed to format DOM Document: " + exc, exc);
     }
