@@ -1,5 +1,5 @@
 #document:
-  #dtd: [ name: 'HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"', public: null, system: null ]
+  #dtd: [ name: 'HTML', public: '-//W3C//DTD HTML 4.01 Transitional//EN', system: 'http://www.w3.org/TR/html4/loose.dtd' ]
   #comment: ' NewPage '
   {http://www.w3.org/1999/xhtml}html: [ lang: 'en' ]
     {http://www.w3.org/1999/xhtml}head:
@@ -19,194 +19,256 @@
       {http://www.w3.org/1999/xhtml}meta: [ content: 'getWhen()', name: 'keywords' ]
       {http://www.w3.org/1999/xhtml}meta: [ content: 'getModifiers()', name: 'keywords' ]
       {http://www.w3.org/1999/xhtml}meta: [ content: 'paramString()', name: 'keywords' ]
-      {http://www.w3.org/1999/xhtml}link: [ title: 'Style', href: '../../../stylesheet.css', type: 'text/css', rel: 'stylesheet' ]
+      {http://www.w3.org/1999/xhtml}link: [ href: '../../../stylesheet.css', rel: 'stylesheet', title: 'Style', type: 'text/css' ]
     {http://www.w3.org/1999/xhtml}body:
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}script: [ type: 'text/javascript' ]
-        #text: '<!--\n    if (location.href.indexOf(\'is-external=true\') == -1) [\n        parent.document.title="ActionEvent (Java Platform SE 7 )";\n    ]\n//-->\n'
+        #text: '<!--\n    if (location.href.indexOf(\'is-external=true\') == -1) {\n        parent.document.title="ActionEvent (Java Platform SE 7 )";\n    }\n//-->\n'
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}noscript:
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}div:
           #text: 'JavaScript is disabled on your browser.'
+        #text: '\n'
+      #text: '\n'
       #comment: ' ========= START OF TOP NAVBAR ======= '
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}div: [ class: 'topNav' ]
-        {http://www.w3.org/1999/xhtml}a: [ name: 'navbar_top' ]
+        {http://www.w3.org/1999/xhtml}a: [ name: 'navbar_top', shape: 'rect' ]
+          #text: '\n'
           #comment: '   '
-        {http://www.w3.org/1999/xhtml}a: [ title: 'Skip navigation links', href: '#skip-navbar_top' ]
-        {http://www.w3.org/1999/xhtml}a: [ name: 'navbar_top_firstrow' ]
+          #text: '\n'
+        {http://www.w3.org/1999/xhtml}a: [ href: '#skip-navbar_top', shape: 'rect', title: 'Skip navigation links' ]
+        {http://www.w3.org/1999/xhtml}a: [ name: 'navbar_top_firstrow', shape: 'rect' ]
+          #text: '\n'
           #comment: '   '
-        #text: ' '
-        {http://www.w3.org/1999/xhtml}ul: [ title: 'Navigation', class: 'navList' ]
+          #text: '\n'
+        #text: '\n'
+        {http://www.w3.org/1999/xhtml}ul: [ class: 'navList', title: 'Navigation' ]
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: '../../../overview-summary.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../overview-summary.html', shape: 'rect' ]
               #text: 'Overview'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: 'package-summary.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: 'package-summary.html', shape: 'rect' ]
               #text: 'Package'
           {http://www.w3.org/1999/xhtml}li: [ class: 'navBarCell1Rev' ]
             #text: 'Class'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: 'class-use/ActionEvent.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: 'class-use/ActionEvent.html', shape: 'rect' ]
               #text: 'Use'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: 'package-tree.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: 'package-tree.html', shape: 'rect' ]
               #text: 'Tree'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: '../../../deprecated-list.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../deprecated-list.html', shape: 'rect' ]
               #text: 'Deprecated'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: '../../../index-files/index-1.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../index-files/index-1.html', shape: 'rect' ]
               #text: 'Index'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: '../../../help-doc.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../help-doc.html', shape: 'rect' ]
               #text: 'Help'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}div: [ class: 'aboutLanguage' ]
           {http://www.w3.org/1999/xhtml}em:
             {http://www.w3.org/1999/xhtml}strong:
-              #text: 'Java™ Platform'
-              {http://www.w3.org/1999/xhtml}br:
-              #text: 'Standard Ed. 7'
+              #text: 'Java'
+              #text: '™'
+              #text: ' Platform'
+              {http://www.w3.org/1999/xhtml}br: [ clear: 'none' ]
+              #text: 'Standard'
+              #text: ' Ed.'
+              #text: ' 7'
+        #text: '\n'
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}div: [ class: 'subNav' ]
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}ul: [ class: 'navList' ]
           {http://www.w3.org/1999/xhtml}li:
             #text: 'Prev Class'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ title: 'interface in java.awt.event', href: '../../../java/awt/event/ActionListener.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionListener.html', shape: 'rect', title: 'interface in java.awt.event' ]
               {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                 #text: 'Next Class'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}ul: [ class: 'navList' ]
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ target: '_top', href: '../../../index.html?java/awt/event/ActionEvent.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../index.html?java/awt/event/ActionEvent.html', shape: 'rect', target: '_top' ]
               #text: 'Frames'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ target: '_top', href: 'ActionEvent.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: 'ActionEvent.html', shape: 'rect', target: '_top' ]
               #text: 'No Frames'
-        {http://www.w3.org/1999/xhtml}ul: [ id: 'allclasses_navbar_top', class: 'navList' ]
+        #text: '\n'
+        {http://www.w3.org/1999/xhtml}ul: [ class: 'navList', id: 'allclasses_navbar_top' ]
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: '../../../allclasses-noframe.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../allclasses-noframe.html', shape: 'rect' ]
               #text: 'All Classes'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}div:
+          #text: '\n'
           {http://www.w3.org/1999/xhtml}script: [ type: 'text/javascript' ]
-            #text: '<!--\n  allClassesLink = document.getElementById("allclasses_navbar_top");\n  if(window==top) [\n    allClassesLink.style.display = "block";\n  ]\n  else [\n    allClassesLink.style.display = "none";\n  ]\n  //-->\n'
+            #text: '<!--\n  allClassesLink = document.getElementById("allclasses_navbar_top");\n  if(window==top) {\n    allClassesLink.style.display = "block";\n  }\n  else {\n    allClassesLink.style.disp'
+            #text: 'lay = "none";\n  }\n  //-->\n'
+          #text: '\n'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}div:
+          #text: '\n'
           {http://www.w3.org/1999/xhtml}ul: [ class: 'subNavList' ]
             {http://www.w3.org/1999/xhtml}li:
-              #text: 'Summary: '
+              #text: 'Summary:'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              #text: 'Nested | '
+              #text: 'Nested'
+              #text: ' |'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#field_summary' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#field_summary', shape: 'rect' ]
                 #text: 'Field'
-              #text: ' | '
+              #text: ' |'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#constructor_summary' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#constructor_summary', shape: 'rect' ]
                 #text: 'Constr'
-              #text: ' | '
+              #text: ' |'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#method_summary' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#method_summary', shape: 'rect' ]
                 #text: 'Method'
+          #text: '\n'
           {http://www.w3.org/1999/xhtml}ul: [ class: 'subNavList' ]
             {http://www.w3.org/1999/xhtml}li:
-              #text: 'Detail: '
+              #text: 'Detail:'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#field_detail' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#field_detail', shape: 'rect' ]
                 #text: 'Field'
-              #text: ' | '
+              #text: ' |'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#constructor_detail' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#constructor_detail', shape: 'rect' ]
                 #text: 'Constr'
-              #text: ' | '
+              #text: ' |'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#method_detail' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#method_detail', shape: 'rect' ]
                 #text: 'Method'
-        {http://www.w3.org/1999/xhtml}a: [ name: 'skip-navbar_top' ]
+          #text: '\n'
+        #text: '\n'
+        {http://www.w3.org/1999/xhtml}a: [ name: 'skip-navbar_top', shape: 'rect' ]
+          #text: '\n'
           #comment: '   '
+          #text: '\n'
+      #text: '\n'
       #comment: ' ========= END OF TOP NAVBAR ========= '
+      #text: '\n'
       #comment: ' ======== START OF CLASS DATA ======== '
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}div: [ class: 'header' ]
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}div: [ class: 'subTitle' ]
           #text: 'java.awt.event'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}h2: [ class: 'title', title: 'Class ActionEvent' ]
           #text: 'Class ActionEvent'
+        #text: '\n'
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}div: [ class: 'contentContainer' ]
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}ul: [ class: 'inheritance' ]
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/Object.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html', shape: 'rect', title: 'class in java.lang' ]
               #text: 'java.lang.Object'
           {http://www.w3.org/1999/xhtml}li:
+            #text: '\n'
             {http://www.w3.org/1999/xhtml}ul: [ class: 'inheritance' ]
               {http://www.w3.org/1999/xhtml}li:
-                {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.util', href: '../../../java/util/EventObject.html' ]
+                {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html', shape: 'rect', title: 'class in java.util' ]
                   #text: 'java.util.EventObject'
               {http://www.w3.org/1999/xhtml}li:
+                #text: '\n'
                 {http://www.w3.org/1999/xhtml}ul: [ class: 'inheritance' ]
                   {http://www.w3.org/1999/xhtml}li:
-                    {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.awt', href: '../../../java/awt/AWTEvent.html' ]
+                    {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html', shape: 'rect', title: 'class in java.awt' ]
                       #text: 'java.awt.AWTEvent'
                   {http://www.w3.org/1999/xhtml}li:
+                    #text: '\n'
                     {http://www.w3.org/1999/xhtml}ul: [ class: 'inheritance' ]
                       {http://www.w3.org/1999/xhtml}li:
                         #text: 'java.awt.event.ActionEvent'
+                    #text: '\n'
+                #text: '\n'
+            #text: '\n'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}div: [ class: 'description' ]
+          #text: '\n'
           {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
             {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+              #text: '\n'
               {http://www.w3.org/1999/xhtml}dl:
                 {http://www.w3.org/1999/xhtml}dt:
                   #text: 'All Implemented Interfaces:'
                 {http://www.w3.org/1999/xhtml}dd:
-                  {http://www.w3.org/1999/xhtml}a: [ title: 'interface in java.io', href: '../../../java/io/Serializable.html' ]
+                  {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/io/Serializable.html', shape: 'rect', title: 'interface in java.io' ]
                     #text: 'Serializable'
+              #text: '\n'
               {http://www.w3.org/1999/xhtml}hr:
-              {http://www.w3.org/1999/xhtml}br:
+              #text: '\n'
+              {http://www.w3.org/1999/xhtml}br: [ clear: 'none' ]
+              #text: '\n'
               {http://www.w3.org/1999/xhtml}pre:
                 #text: 'public class '
                 {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                   #text: 'ActionEvent'
                 #text: '\nextends '
-                {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.awt', href: '../../../java/awt/AWTEvent.html' ]
+                {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html', shape: 'rect', title: 'class in java.awt' ]
                   #text: 'AWTEvent'
+              #text: '\n'
               {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
-                #text: 'A semantic event which indicates that a component-defined action occurred. This high-level event is generated by a component (such as a '
+                #text: 'A semantic event which indicates that a component-defined action occurred.\n This high-level event is generated by a component (such as a\n '
                 {http://www.w3.org/1999/xhtml}code:
                   #text: 'Button'
-                #text: ') when the component-specific action occurs (such as being pressed). The event is passed to every '
+                #text: ') when\n the component-specific action occurs (such as being pressed).\n The event is passed to every '
                 {http://www.w3.org/1999/xhtml}code:
                   #text: 'ActionListener'
-                #text: ' object that registered to receive such events using the component\'s '
+                #text: ' object\n that registered to receive such events using the component\'s\n '
                 {http://www.w3.org/1999/xhtml}code:
                   #text: 'addActionListener'
-                #text: ' method. '
+                #text: ' method.\n '
                 {http://www.w3.org/1999/xhtml}p:
-                  #text: ''
+                  #text: '\n '
                   {http://www.w3.org/1999/xhtml}b:
                     #text: 'Note:'
                   #text: ' To invoke an '
                   {http://www.w3.org/1999/xhtml}code:
                     #text: 'ActionEvent'
-                  #text: ' on a '
+                  #text: ' on a\n '
                   {http://www.w3.org/1999/xhtml}code:
                     #text: 'Button'
-                  #text: ' using the keyboard, use the Space bar.'
+                  #text: ' using the keyboard, use the Space bar.\n '
                 {http://www.w3.org/1999/xhtml}p:
-                  #text: 'The object that implements the '
+                  #text: '\n The object that implements the '
                   {http://www.w3.org/1999/xhtml}code:
                     #text: 'ActionListener'
-                  #text: ' interface gets this '
+                  #text: ' interface\n gets this '
                   {http://www.w3.org/1999/xhtml}code:
                     #text: 'ActionEvent'
-                  #text: ' when the event occurs. The listener is therefore spared the details of processing individual mouse movements and mouse clicks, and can instead process a "meaningful" (semantic) event like "button pressed".'
+                  #text: ' when the event occurs. The listener\n is therefore spared the details of processing individual mouse movements\n and mouse clicks, and can instead process a "meaningful" (semantic)\n'
+                  #text: ' event like "button pressed".\n '
                 {http://www.w3.org/1999/xhtml}p:
-                  #text: 'An unspecified behavior will be caused if the '
+                  #text: '\n An unspecified behavior will be caused if the '
                   {http://www.w3.org/1999/xhtml}code:
                     #text: 'id'
-                  #text: ' parameter of any particular '
+                  #text: ' parameter\n of any particular '
                   {http://www.w3.org/1999/xhtml}code:
                     #text: 'ActionEvent'
-                  #text: ' instance is not in the range from '
+                  #text: ' instance is not\n in the range from '
                   {http://www.w3.org/1999/xhtml}code:
                     #text: 'ACTION_FIRST'
                   #text: ' to '
                   {http://www.w3.org/1999/xhtml}code:
                     #text: 'ACTION_LAST'
                   #text: '.'
+              #text: '\n'
               {http://www.w3.org/1999/xhtml}dl:
                 {http://www.w3.org/1999/xhtml}dt:
                   {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
@@ -217,612 +279,764 @@
                   {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                     #text: 'See Also:'
                 {http://www.w3.org/1999/xhtml}dd:
-                  {http://www.w3.org/1999/xhtml}a: [ title: 'interface in java.awt.event', href: '../../../java/awt/event/ActionListener.html' ]
+                  {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionListener.html', shape: 'rect', title: 'interface in java.awt.event' ]
                     {http://www.w3.org/1999/xhtml}code:
                       #text: 'ActionListener'
-                  #text: ', '
-                  {http://www.w3.org/1999/xhtml}a: [ href: 'http://java.sun.com/docs/books/tutorial/uiswing/events/actionlistener.html' ]
+                  #text: ', \n'
+                  {http://www.w3.org/1999/xhtml}a: [ href: 'http://java.sun.com/docs/books/tutorial/uiswing/events/actionlistener.html', shape: 'rect' ]
                     #text: 'Tutorial: How to Write an Action Listener'
-                  #text: ', '
-                  {http://www.w3.org/1999/xhtml}a: [ href: '../../../serialized-form.html#java.awt.event.ActionEvent' ]
+                  #text: ', \n'
+                  {http://www.w3.org/1999/xhtml}a: [ href: '../../../serialized-form.html#java.awt.event.ActionEvent', shape: 'rect' ]
                     #text: 'Serialized Form'
+              #text: '\n'
+          #text: '\n'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}div: [ class: 'summary' ]
+          #text: '\n'
           {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
             {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+              #text: '\n'
               #comment: ' =========== FIELD SUMMARY =========== '
+              #text: '\n'
               {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                 {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'field_summary' ]
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'field_summary', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}h3:
                     #text: 'Field Summary'
-                  {http://www.w3.org/1999/xhtml}table: [ summary: 'Field Summary table, listing fields, and an explanation', cellspacing: '0', cellpadding: '3', border: '0', class: 'overviewSummary' ]
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}table: [ border: '0', cellpadding: '3', cellspacing: '0', class: 'overviewSummary', summary: 'Field Summary table, listing fields, and an explanation' ]
                     {http://www.w3.org/1999/xhtml}caption:
                       {http://www.w3.org/1999/xhtml}span:
                         #text: 'Fields'
                       {http://www.w3.org/1999/xhtml}span: [ class: 'tabEnd' ]
                         #text: ' '
                     {http://www.w3.org/1999/xhtml}tr:
-                      {http://www.w3.org/1999/xhtml}th: [ scope: 'col', class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}th: [ class: 'colFirst', colspan: '1', rowspan: '1', scope: 'col' ]
                         #text: 'Modifier and Type'
-                      {http://www.w3.org/1999/xhtml}th: [ scope: 'col', class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}th: [ class: 'colLast', colspan: '1', rowspan: '1', scope: 'col' ]
                         #text: 'Field and Description'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'altColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'static int'
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ACTION_FIRST' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ACTION_FIRST', shape: 'rect' ]
                               #text: 'ACTION_FIRST'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'The first number in the range of ids used for action events.'
+                        #text: '\n'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'rowColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'static int'
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ACTION_LAST' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ACTION_LAST', shape: 'rect' ]
                               #text: 'ACTION_LAST'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'The last number in the range of ids used for action events.'
+                        #text: '\n'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'altColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'static int'
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ACTION_PERFORMED' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ACTION_PERFORMED', shape: 'rect' ]
                               #text: 'ACTION_PERFORMED'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'This event id indicates that a meaningful action occured.'
+                        #text: '\n'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'rowColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'static int'
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ALT_MASK' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ALT_MASK', shape: 'rect' ]
                               #text: 'ALT_MASK'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'The alt modifier.'
+                        #text: '\n'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'altColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'static int'
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#CTRL_MASK' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#CTRL_MASK', shape: 'rect' ]
                               #text: 'CTRL_MASK'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'The control modifier.'
+                        #text: '\n'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'rowColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'static int'
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#META_MASK' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#META_MASK', shape: 'rect' ]
                               #text: 'META_MASK'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'The meta modifier.'
+                        #text: '\n'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'altColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'static int'
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#SHIFT_MASK' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#SHIFT_MASK', shape: 'rect' ]
                               #text: 'SHIFT_MASK'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'The shift modifier.'
+                        #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
-                      {http://www.w3.org/1999/xhtml}a: [ name: 'fields_inherited_from_class_java.awt.AWTEvent' ]
+                      {http://www.w3.org/1999/xhtml}a: [ name: 'fields_inherited_from_class_java.awt.AWTEvent', shape: 'rect' ]
+                        #text: '\n'
                         #comment: '   '
-                      #text: ' '
+                        #text: '\n'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h3:
-                        #text: 'Fields inherited from class java.awt.'
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.awt', href: '../../../java/awt/AWTEvent.html' ]
+                        #text: 'Fields inherited from class'
+                        #text: ' java.awt.'
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html', shape: 'rect', title: 'class in java.awt' ]
                           #text: 'AWTEvent'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}code:
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#ACTION_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#ACTION_EVENT_MASK', shape: 'rect' ]
                           #text: 'ACTION_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#ADJUSTMENT_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#ADJUSTMENT_EVENT_MASK', shape: 'rect' ]
                           #text: 'ADJUSTMENT_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#COMPONENT_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#COMPONENT_EVENT_MASK', shape: 'rect' ]
                           #text: 'COMPONENT_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#consumed' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#consumed', shape: 'rect' ]
                           #text: 'consumed'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#CONTAINER_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#CONTAINER_EVENT_MASK', shape: 'rect' ]
                           #text: 'CONTAINER_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#FOCUS_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#FOCUS_EVENT_MASK', shape: 'rect' ]
                           #text: 'FOCUS_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#HIERARCHY_BOUNDS_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#HIERARCHY_BOUNDS_EVENT_MASK', shape: 'rect' ]
                           #text: 'HIERARCHY_BOUNDS_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#HIERARCHY_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#HIERARCHY_EVENT_MASK', shape: 'rect' ]
                           #text: 'HIERARCHY_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#id' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#id', shape: 'rect' ]
                           #text: 'id'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#INPUT_METHOD_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#INPUT_METHOD_EVENT_MASK', shape: 'rect' ]
                           #text: 'INPUT_METHOD_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#INVOCATION_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#INVOCATION_EVENT_MASK', shape: 'rect' ]
                           #text: 'INVOCATION_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#ITEM_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#ITEM_EVENT_MASK', shape: 'rect' ]
                           #text: 'ITEM_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#KEY_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#KEY_EVENT_MASK', shape: 'rect' ]
                           #text: 'KEY_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#MOUSE_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#MOUSE_EVENT_MASK', shape: 'rect' ]
                           #text: 'MOUSE_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#MOUSE_MOTION_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#MOUSE_MOTION_EVENT_MASK', shape: 'rect' ]
                           #text: 'MOUSE_MOTION_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#MOUSE_WHEEL_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#MOUSE_WHEEL_EVENT_MASK', shape: 'rect' ]
                           #text: 'MOUSE_WHEEL_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#PAINT_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#PAINT_EVENT_MASK', shape: 'rect' ]
                           #text: 'PAINT_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#RESERVED_ID_MAX' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#RESERVED_ID_MAX', shape: 'rect' ]
                           #text: 'RESERVED_ID_MAX'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#TEXT_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#TEXT_EVENT_MASK', shape: 'rect' ]
                           #text: 'TEXT_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#WINDOW_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#WINDOW_EVENT_MASK', shape: 'rect' ]
                           #text: 'WINDOW_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#WINDOW_FOCUS_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#WINDOW_FOCUS_EVENT_MASK', shape: 'rect' ]
                           #text: 'WINDOW_FOCUS_EVENT_MASK'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#WINDOW_STATE_EVENT_MASK' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#WINDOW_STATE_EVENT_MASK', shape: 'rect' ]
                           #text: 'WINDOW_STATE_EVENT_MASK'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
-                      {http://www.w3.org/1999/xhtml}a: [ name: 'fields_inherited_from_class_java.util.EventObject' ]
+                      {http://www.w3.org/1999/xhtml}a: [ name: 'fields_inherited_from_class_java.util.EventObject', shape: 'rect' ]
+                        #text: '\n'
                         #comment: '   '
-                      #text: ' '
+                        #text: '\n'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h3:
-                        #text: 'Fields inherited from class java.util.'
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.util', href: '../../../java/util/EventObject.html' ]
+                        #text: 'Fields inherited from class'
+                        #text: ' java.util.'
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html', shape: 'rect', title: 'class in java.util' ]
                           #text: 'EventObject'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}code:
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html#source' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html#source', shape: 'rect' ]
                           #text: 'source'
+                  #text: '\n'
+              #text: '\n'
               #comment: ' ======== CONSTRUCTOR SUMMARY ======== '
+              #text: '\n'
               {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                 {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'constructor_summary' ]
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'constructor_summary', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}h3:
                     #text: 'Constructor Summary'
-                  {http://www.w3.org/1999/xhtml}table: [ summary: 'Constructor Summary table, listing constructors, and an explanation', cellspacing: '0', cellpadding: '3', border: '0', class: 'overviewSummary' ]
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}table: [ border: '0', cellpadding: '3', cellspacing: '0', class: 'overviewSummary', summary: 'Constructor Summary table, listing constructors, and an explanation' ]
                     {http://www.w3.org/1999/xhtml}caption:
                       {http://www.w3.org/1999/xhtml}span:
                         #text: 'Constructors'
                       {http://www.w3.org/1999/xhtml}span: [ class: 'tabEnd' ]
                         #text: ' '
                     {http://www.w3.org/1999/xhtml}tr:
-                      {http://www.w3.org/1999/xhtml}th: [ scope: 'col', class: 'colOne' ]
+                      {http://www.w3.org/1999/xhtml}th: [ class: 'colOne', colspan: '1', rowspan: '1', scope: 'col' ]
                         #text: 'Constructor and Description'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'altColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colOne' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colOne', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ActionEvent(java.lang.Object,%20int,%20java.lang.String)' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ActionEvent(java.lang.Object,%20int,%20java.lang.String)', shape: 'rect' ]
                               #text: 'ActionEvent'
                           #text: '('
-                          {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/Object.html' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html', shape: 'rect', title: 'class in java.lang' ]
                             #text: 'Object'
-                          #text: ' source, int id, '
-                          {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/String.html' ]
+                          #text: ' source,\n           int'
+                          #text: ' id,\n           '
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/String.html', shape: 'rect', title: 'class in java.lang' ]
                             #text: 'String'
                           #text: ' command)'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'Constructs an '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'ActionEvent'
                           #text: ' object.'
+                        #text: '\n'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'rowColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colOne' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colOne', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ActionEvent(java.lang.Object,%20int,%20java.lang.String,%20int)' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ActionEvent(java.lang.Object,%20int,%20java.lang.String,%20int)', shape: 'rect' ]
                               #text: 'ActionEvent'
                           #text: '('
-                          {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/Object.html' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html', shape: 'rect', title: 'class in java.lang' ]
                             #text: 'Object'
-                          #text: ' source, int id, '
-                          {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/String.html' ]
+                          #text: ' source,\n           int'
+                          #text: ' id,\n           '
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/String.html', shape: 'rect', title: 'class in java.lang' ]
                             #text: 'String'
-                          #text: ' command, int modifiers)'
-                        #text: ' '
+                          #text: ' command,\n           int'
+                          #text: ' modifiers)'
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'Constructs an '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'ActionEvent'
                           #text: ' object with modifier keys.'
+                        #text: '\n'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'altColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colOne' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colOne', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ActionEvent(java.lang.Object,%20int,%20java.lang.String,%20long,%20int)' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#ActionEvent(java.lang.Object,%20int,%20java.lang.String,%20long,%20int)', shape: 'rect' ]
                               #text: 'ActionEvent'
                           #text: '('
-                          {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/Object.html' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html', shape: 'rect', title: 'class in java.lang' ]
                             #text: 'Object'
-                          #text: ' source, int id, '
-                          {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/String.html' ]
+                          #text: ' source,\n           int'
+                          #text: ' id,\n           '
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/String.html', shape: 'rect', title: 'class in java.lang' ]
                             #text: 'String'
-                          #text: ' command, long when, int modifiers)'
-                        #text: ' '
+                          #text: ' command,\n           long'
+                          #text: ' when,\n           int'
+                          #text: ' modifiers)'
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'Constructs an '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'ActionEvent'
-                          #text: ' object with the specified modifier keys and timestamp.'
+                          #text: ' object with the specified\n modifier keys and timestamp.'
+                        #text: '\n'
+                  #text: '\n'
+              #text: '\n'
               #comment: ' ========== METHOD SUMMARY =========== '
+              #text: '\n'
               {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                 {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'method_summary' ]
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'method_summary', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}h3:
                     #text: 'Method Summary'
-                  {http://www.w3.org/1999/xhtml}table: [ summary: 'Method Summary table, listing methods, and an explanation', cellspacing: '0', cellpadding: '3', border: '0', class: 'overviewSummary' ]
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}table: [ border: '0', cellpadding: '3', cellspacing: '0', class: 'overviewSummary', summary: 'Method Summary table, listing methods, and an explanation' ]
                     {http://www.w3.org/1999/xhtml}caption:
                       {http://www.w3.org/1999/xhtml}span:
                         #text: 'Methods'
                       {http://www.w3.org/1999/xhtml}span: [ class: 'tabEnd' ]
                         #text: ' '
                     {http://www.w3.org/1999/xhtml}tr:
-                      {http://www.w3.org/1999/xhtml}th: [ scope: 'col', class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}th: [ class: 'colFirst', colspan: '1', rowspan: '1', scope: 'col' ]
                         #text: 'Modifier and Type'
-                      {http://www.w3.org/1999/xhtml}th: [ scope: 'col', class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}th: [ class: 'colLast', colspan: '1', rowspan: '1', scope: 'col' ]
                         #text: 'Method and Description'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'altColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
-                          {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/String.html' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/String.html', shape: 'rect', title: 'class in java.lang' ]
                             #text: 'String'
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getActionCommand()' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getActionCommand()', shape: 'rect' ]
                               #text: 'getActionCommand'
                           #text: '()'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'Returns the command string associated with this action.'
+                        #text: '\n'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'rowColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'int'
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getModifiers()' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getModifiers()', shape: 'rect' ]
                               #text: 'getModifiers'
                           #text: '()'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'Returns the modifier keys held down during this action event.'
+                        #text: '\n'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'altColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'long'
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getWhen()' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getWhen()', shape: 'rect' ]
                               #text: 'getWhen'
                           #text: '()'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'Returns the timestamp of when this event occurred.'
+                        #text: '\n'
                     {http://www.w3.org/1999/xhtml}tr: [ class: 'rowColor' ]
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colFirst', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
-                          {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/String.html' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/String.html', shape: 'rect', title: 'class in java.lang' ]
                             #text: 'String'
-                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast' ]
+                      {http://www.w3.org/1999/xhtml}td: [ class: 'colLast', colspan: '1', rowspan: '1' ]
                         {http://www.w3.org/1999/xhtml}code:
                           {http://www.w3.org/1999/xhtml}strong:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#paramString()' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#paramString()', shape: 'rect' ]
                               #text: 'paramString'
                           #text: '()'
-                        #text: ' '
+                        #text: '\n'
                         {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                           #text: 'Returns a parameter string identifying this action event.'
+                        #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
-                      {http://www.w3.org/1999/xhtml}a: [ name: 'methods_inherited_from_class_java.awt.AWTEvent' ]
+                      {http://www.w3.org/1999/xhtml}a: [ name: 'methods_inherited_from_class_java.awt.AWTEvent', shape: 'rect' ]
+                        #text: '\n'
                         #comment: '   '
-                      #text: ' '
+                        #text: '\n'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h3:
-                        #text: 'Methods inherited from class java.awt.'
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.awt', href: '../../../java/awt/AWTEvent.html' ]
+                        #text: 'Methods inherited from class'
+                        #text: ' java.awt.'
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html', shape: 'rect', title: 'class in java.awt' ]
                           #text: 'AWTEvent'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}code:
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#consume()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#consume()', shape: 'rect' ]
                           #text: 'consume'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#getID()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#getID()', shape: 'rect' ]
                           #text: 'getID'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#isConsumed()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#isConsumed()', shape: 'rect' ]
                           #text: 'isConsumed'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#setSource(java.lang.Object)' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#setSource(java.lang.Object)', shape: 'rect' ]
                           #text: 'setSource'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#toString()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#toString()', shape: 'rect' ]
                           #text: 'toString'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
-                      {http://www.w3.org/1999/xhtml}a: [ name: 'methods_inherited_from_class_java.util.EventObject' ]
+                      {http://www.w3.org/1999/xhtml}a: [ name: 'methods_inherited_from_class_java.util.EventObject', shape: 'rect' ]
+                        #text: '\n'
                         #comment: '   '
-                      #text: ' '
+                        #text: '\n'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h3:
-                        #text: 'Methods inherited from class java.util.'
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.util', href: '../../../java/util/EventObject.html' ]
+                        #text: 'Methods inherited from class'
+                        #text: ' java.util.'
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html', shape: 'rect', title: 'class in java.util' ]
                           #text: 'EventObject'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}code:
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html#getSource()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html#getSource()', shape: 'rect' ]
                           #text: 'getSource'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
-                      {http://www.w3.org/1999/xhtml}a: [ name: 'methods_inherited_from_class_java.lang.Object' ]
+                      {http://www.w3.org/1999/xhtml}a: [ name: 'methods_inherited_from_class_java.lang.Object', shape: 'rect' ]
+                        #text: '\n'
                         #comment: '   '
-                      #text: ' '
+                        #text: '\n'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h3:
-                        #text: 'Methods inherited from class java.lang.'
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/Object.html' ]
+                        #text: 'Methods inherited from class'
+                        #text: ' java.lang.'
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html', shape: 'rect', title: 'class in java.lang' ]
                           #text: 'Object'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}code:
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#clone()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#clone()', shape: 'rect' ]
                           #text: 'clone'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#equals(java.lang.Object)' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#equals(java.lang.Object)', shape: 'rect' ]
                           #text: 'equals'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#finalize()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#finalize()', shape: 'rect' ]
                           #text: 'finalize'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#getClass()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#getClass()', shape: 'rect' ]
                           #text: 'getClass'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#hashCode()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#hashCode()', shape: 'rect' ]
                           #text: 'hashCode'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#notify()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#notify()', shape: 'rect' ]
                           #text: 'notify'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#notifyAll()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#notifyAll()', shape: 'rect' ]
                           #text: 'notifyAll'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#wait()' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#wait()', shape: 'rect' ]
                           #text: 'wait'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#wait(long)' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#wait(long)', shape: 'rect' ]
                           #text: 'wait'
                         #text: ', '
-                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#wait(long,%20int)' ]
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html#wait(long,%20int)', shape: 'rect' ]
                           #text: 'wait'
+                  #text: '\n'
+              #text: '\n'
+          #text: '\n'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}div: [ class: 'details' ]
+          #text: '\n'
           {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
             {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+              #text: '\n'
               #comment: ' ============ FIELD DETAIL =========== '
+              #text: '\n'
               {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                 {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'field_detail' ]
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'field_detail', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}h3:
                     #text: 'Field Detail'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'SHIFT_MASK' ]
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'SHIFT_MASK', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'SHIFT_MASK'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public static final int SHIFT_MASK'
+                        #text: 'public static final'
+                        #text: ' int SHIFT_MASK'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
-                        #text: 'The shift modifier. An indicator that the shift key was held down during the event.'
+                        #text: 'The shift modifier. An indicator that the shift key was held\n down during the event.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'See Also:'
                         {http://www.w3.org/1999/xhtml}dd:
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.SHIFT_MASK' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.SHIFT_MASK', shape: 'rect' ]
                             #text: 'Constant Field Values'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'CTRL_MASK' ]
+                      #text: '\n'
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'CTRL_MASK', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'CTRL_MASK'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public static final int CTRL_MASK'
+                        #text: 'public static final'
+                        #text: ' int CTRL_MASK'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
-                        #text: 'The control modifier. An indicator that the control key was held down during the event.'
+                        #text: 'The control modifier. An indicator that the control key was held\n down during the event.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'See Also:'
                         {http://www.w3.org/1999/xhtml}dd:
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.CTRL_MASK' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.CTRL_MASK', shape: 'rect' ]
                             #text: 'Constant Field Values'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'META_MASK' ]
+                      #text: '\n'
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'META_MASK', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'META_MASK'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public static final int META_MASK'
+                        #text: 'public static final'
+                        #text: ' int META_MASK'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
-                        #text: 'The meta modifier. An indicator that the meta key was held down during the event.'
+                        #text: 'The meta modifier. An indicator that the meta key was held\n down during the event.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'See Also:'
                         {http://www.w3.org/1999/xhtml}dd:
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.META_MASK' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.META_MASK', shape: 'rect' ]
                             #text: 'Constant Field Values'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'ALT_MASK' ]
+                      #text: '\n'
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'ALT_MASK', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'ALT_MASK'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public static final int ALT_MASK'
+                        #text: 'public static final'
+                        #text: ' int ALT_MASK'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
-                        #text: 'The alt modifier. An indicator that the alt key was held down during the event.'
+                        #text: 'The alt modifier. An indicator that the alt key was held\n down during the event.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'See Also:'
                         {http://www.w3.org/1999/xhtml}dd:
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.ALT_MASK' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.ALT_MASK', shape: 'rect' ]
                             #text: 'Constant Field Values'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'ACTION_FIRST' ]
+                      #text: '\n'
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'ACTION_FIRST', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'ACTION_FIRST'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public static final int ACTION_FIRST'
+                        #text: 'public static final'
+                        #text: ' int ACTION_FIRST'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                         #text: 'The first number in the range of ids used for action events.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'See Also:'
                         {http://www.w3.org/1999/xhtml}dd:
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.ACTION_FIRST' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.ACTION_FIRST', shape: 'rect' ]
                             #text: 'Constant Field Values'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'ACTION_LAST' ]
+                      #text: '\n'
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'ACTION_LAST', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'ACTION_LAST'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public static final int ACTION_LAST'
+                        #text: 'public static final'
+                        #text: ' int ACTION_LAST'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                         #text: 'The last number in the range of ids used for action events.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'See Also:'
                         {http://www.w3.org/1999/xhtml}dd:
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.ACTION_LAST' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.ACTION_LAST', shape: 'rect' ]
                             #text: 'Constant Field Values'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'ACTION_PERFORMED' ]
+                      #text: '\n'
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'ACTION_PERFORMED', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockListLast' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'ACTION_PERFORMED'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public static final int ACTION_PERFORMED'
+                        #text: 'public static final'
+                        #text: ' int ACTION_PERFORMED'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                         #text: 'This event id indicates that a meaningful action occured.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'See Also:'
                         {http://www.w3.org/1999/xhtml}dd:
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.ACTION_PERFORMED' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../constant-values.html#java.awt.event.ActionEvent.ACTION_PERFORMED', shape: 'rect' ]
                             #text: 'Constant Field Values'
+                      #text: '\n'
+                  #text: '\n'
+              #text: '\n'
               #comment: ' ========= CONSTRUCTOR DETAIL ======== '
+              #text: '\n'
               {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                 {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'constructor_detail' ]
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'constructor_detail', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}h3:
                     #text: 'Constructor Detail'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'ActionEvent(java.lang.Object, int, java.lang.String)' ]
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'ActionEvent(java.lang.Object, int, java.lang.String)', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'ActionEvent'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public ActionEvent('
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/Object.html' ]
+                        #text: 'public'
+                        #text: ' ActionEvent('
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html', shape: 'rect', title: 'class in java.lang' ]
                           #text: 'Object'
-                        #text: ' source,\n           int id,\n           '
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/String.html' ]
+                        #text: ' source,\n           int'
+                        #text: ' id,\n           '
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/String.html', shape: 'rect', title: 'class in java.lang' ]
                           #text: 'String'
-                        #text: ' command)'
+                        #text: ' command)'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                         #text: 'Constructs an '
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'ActionEvent'
-                        #text: ' object. '
+                        #text: ' object.\n '
                         {http://www.w3.org/1999/xhtml}p:
-                          #text: 'This method throws an '
+                          #text: '\n This method throws an\n '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'IllegalArgumentException'
                           #text: ' if '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'source'
-                          #text: ' is '
+                          #text: '\n is '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'null'
-                          #text: '. A '
+                          #text: '.\n A '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'null'
                           #text: ' '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'command'
-                          #text: ' string is legal, but not recommended.'
+                          #text: ' string is legal,\n but not recommended.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
@@ -834,20 +1048,20 @@
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'id'
-                          #text: ' - An integer that identifies the event. For information on allowable values, see the class description for '
-                          {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.awt.event', href: '../../../java/awt/event/ActionEvent.html' ]
+                          #text: ' - An integer that identifies the event.\n                     For information on allowable values, see\n                     the class description for '
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html', shape: 'rect', title: 'class in java.awt.event' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'ActionEvent'
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'command'
-                          #text: ' - A string that may specify a command (possibly one of several) associated with the event'
+                          #text: ' - A string that may specify a command (possibly one\n                of several) associated with the event'
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'Throws:'
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
-                            {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/IllegalArgumentException.html' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/IllegalArgumentException.html', shape: 'rect', title: 'class in java.lang' ]
                               #text: 'IllegalArgumentException'
                           #text: ' - if '
                           {http://www.w3.org/1999/xhtml}code:
@@ -857,54 +1071,65 @@
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'See Also:'
                         {http://www.w3.org/1999/xhtml}dd:
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html#getSource()' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html#getSource()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'EventObject.getSource()'
-                          #text: ', '
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#getID()' ]
+                          #text: ', \n'
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#getID()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'AWTEvent.getID()'
-                          #text: ', '
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getActionCommand()' ]
+                          #text: ', \n'
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getActionCommand()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'getActionCommand()'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'ActionEvent(java.lang.Object, int, java.lang.String, int)' ]
+                      #text: '\n'
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'ActionEvent(java.lang.Object, int, java.lang.String, int)', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'ActionEvent'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public ActionEvent('
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/Object.html' ]
+                        #text: 'public'
+                        #text: ' ActionEvent('
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html', shape: 'rect', title: 'class in java.lang' ]
                           #text: 'Object'
-                        #text: ' source,\n           int id,\n           '
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/String.html' ]
+                        #text: ' source,\n           int'
+                        #text: ' id,\n           '
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/String.html', shape: 'rect', title: 'class in java.lang' ]
                           #text: 'String'
-                        #text: ' command,\n           int modifiers)'
+                        #text: ' command,\n           int'
+                        #text: ' modifiers)'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                         #text: 'Constructs an '
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'ActionEvent'
-                        #text: ' object with modifier keys. '
+                        #text: ' object with modifier keys.\n '
                         {http://www.w3.org/1999/xhtml}p:
-                          #text: 'This method throws an '
+                          #text: '\n This method throws an\n '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'IllegalArgumentException'
                           #text: ' if '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'source'
-                          #text: ' is '
+                          #text: '\n is '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'null'
-                          #text: '. A '
+                          #text: '.\n A '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'null'
                           #text: ' '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'command'
-                          #text: ' string is legal, but not recommended.'
+                          #text: ' string is legal,\n but not recommended.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
@@ -916,24 +1141,25 @@
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'id'
-                          #text: ' - An integer that identifies the event. For information on allowable values, see the class description for '
-                          {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.awt.event', href: '../../../java/awt/event/ActionEvent.html' ]
+                          #text: ' - An integer that identifies the event.\n                     For information on allowable values, see\n                     the class description for '
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html', shape: 'rect', title: 'class in java.awt.event' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'ActionEvent'
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'command'
-                          #text: ' - A string that may specify a command (possibly one of several) associated with the event'
+                          #text: ' - A string that may specify a command (possibly one\n                of several) associated with the event'
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'modifiers'
-                          #text: ' - The modifier keys down during event (shift, ctrl, alt, meta). Passing negative parameter is not recommended. Zero value means that no modifiers were passed'
+                          #text: ' - The modifier keys down during event\n                  (shift, ctrl, alt, meta).\n                  Passing negative parameter is not recommended.\n                  Zero value mea'
+                          #text: 'ns that no modifiers were passed'
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'Throws:'
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
-                            {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/IllegalArgumentException.html' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/IllegalArgumentException.html', shape: 'rect', title: 'class in java.lang' ]
                               #text: 'IllegalArgumentException'
                           #text: ' - if '
                           {http://www.w3.org/1999/xhtml}code:
@@ -943,58 +1169,70 @@
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'See Also:'
                         {http://www.w3.org/1999/xhtml}dd:
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html#getSource()' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html#getSource()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'EventObject.getSource()'
-                          #text: ', '
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#getID()' ]
+                          #text: ', \n'
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#getID()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'AWTEvent.getID()'
-                          #text: ', '
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getActionCommand()' ]
+                          #text: ', \n'
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getActionCommand()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'getActionCommand()'
-                          #text: ', '
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getModifiers()' ]
+                          #text: ', \n'
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getModifiers()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'getModifiers()'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'ActionEvent(java.lang.Object, int, java.lang.String, long, int)' ]
+                      #text: '\n'
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'ActionEvent(java.lang.Object, int, java.lang.String, long, int)', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockListLast' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'ActionEvent'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public ActionEvent('
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/Object.html' ]
+                        #text: 'public'
+                        #text: ' ActionEvent('
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/Object.html', shape: 'rect', title: 'class in java.lang' ]
                           #text: 'Object'
-                        #text: ' source,\n           int id,\n           '
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/String.html' ]
+                        #text: ' source,\n           int'
+                        #text: ' id,\n           '
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/String.html', shape: 'rect', title: 'class in java.lang' ]
                           #text: 'String'
-                        #text: ' command,\n           long when,\n           int modifiers)'
+                        #text: ' command,\n           long'
+                        #text: ' when,\n           int'
+                        #text: ' modifiers)'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                         #text: 'Constructs an '
                         {http://www.w3.org/1999/xhtml}code:
                           #text: 'ActionEvent'
-                        #text: ' object with the specified modifier keys and timestamp. '
+                        #text: ' object with the specified\n modifier keys and timestamp.\n '
                         {http://www.w3.org/1999/xhtml}p:
-                          #text: 'This method throws an '
+                          #text: '\n This method throws an\n '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'IllegalArgumentException'
                           #text: ' if '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'source'
-                          #text: ' is '
+                          #text: '\n is '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'null'
-                          #text: '. A '
+                          #text: '.\n A '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'null'
                           #text: ' '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'command'
-                          #text: ' string is legal, but not recommended.'
+                          #text: ' string is legal,\n but not recommended.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
@@ -1006,28 +1244,29 @@
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'id'
-                          #text: ' - An integer that identifies the event. For information on allowable values, see the class description for '
-                          {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.awt.event', href: '../../../java/awt/event/ActionEvent.html' ]
+                          #text: ' - An integer that identifies the event.\n                     For information on allowable values, see\n                     the class description for '
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html', shape: 'rect', title: 'class in java.awt.event' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'ActionEvent'
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'command'
-                          #text: ' - A string that may specify a command (possibly one of several) associated with the event'
+                          #text: ' - A string that may specify a command (possibly one\n                of several) associated with the event'
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'modifiers'
-                          #text: ' - The modifier keys down during event (shift, ctrl, alt, meta). Passing negative parameter is not recommended. Zero value means that no modifiers were passed'
+                          #text: ' - The modifier keys down during event\n                  (shift, ctrl, alt, meta).\n                  Passing negative parameter is not recommended.\n                  Zero value mea'
+                          #text: 'ns that no modifiers were passed'
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'when'
-                          #text: ' - A long that gives the time the event occurred. Passing negative or zero value is not recommended'
+                          #text: ' - A long that gives the time the event occurred.\n               Passing negative or zero value\n               is not recommended'
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'Throws:'
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
-                            {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/IllegalArgumentException.html' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/IllegalArgumentException.html', shape: 'rect', title: 'class in java.lang' ]
                               #text: 'IllegalArgumentException'
                           #text: ' - if '
                           {http://www.w3.org/1999/xhtml}code:
@@ -1042,75 +1281,101 @@
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'See Also:'
                         {http://www.w3.org/1999/xhtml}dd:
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html#getSource()' ]
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/util/EventObject.html#getSource()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'EventObject.getSource()'
-                          #text: ', '
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#getID()' ]
+                          #text: ', \n'
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#getID()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'AWTEvent.getID()'
-                          #text: ', '
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getActionCommand()' ]
+                          #text: ', \n'
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getActionCommand()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'getActionCommand()'
-                          #text: ', '
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getModifiers()' ]
+                          #text: ', \n'
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getModifiers()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'getModifiers()'
-                          #text: ', '
-                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getWhen()' ]
+                          #text: ', \n'
+                          {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionEvent.html#getWhen()', shape: 'rect' ]
                             {http://www.w3.org/1999/xhtml}code:
                               #text: 'getWhen()'
+                      #text: '\n'
+                  #text: '\n'
+              #text: '\n'
               #comment: ' ============ METHOD DETAIL ========== '
+              #text: '\n'
               {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                 {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'method_detail' ]
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'method_detail', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}h3:
                     #text: 'Method Detail'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'getActionCommand()' ]
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'getActionCommand()', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'getActionCommand'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public '
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/String.html' ]
+                        #text: 'public'
+                        #text: ' '
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/String.html', shape: 'rect', title: 'class in java.lang' ]
                           #text: 'String'
-                        #text: ' getActionCommand()'
+                        #text: ' getActionCommand()'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
-                        #text: 'Returns the command string associated with this action. This string allows a "modal" component to specify one of several commands, depending on its state. For example, a single button might toggle between "show details" and "hide details". The source object and the event would be the same in each case, but the command string would identify the intended action. '
+                        #text: 'Returns the command string associated with this action.\n This string allows a "modal" component to specify one of several\n commands, depending on its state. For example, a single b'
+                        #text: 'utton might\n toggle between "show details" and "hide details". The source object\n and the event would be the same in each case, but the command string\n would identify the intended '
+                        #text: 'action.\n '
                         {http://www.w3.org/1999/xhtml}p:
-                          #text: 'Note that if a '
+                          #text: '\n Note that if a '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'null'
-                          #text: ' command string was passed to the constructor for this '
+                          #text: ' command string was passed\n to the constructor for this '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'ActionEvent'
-                          #text: ', this this method returns '
+                          #text: ', this\n this method returns '
                           {http://www.w3.org/1999/xhtml}code:
                             #text: 'null'
                           #text: '.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'Returns:'
                         {http://www.w3.org/1999/xhtml}dd:
                           #text: 'the string identifying the command for this event'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'getWhen()' ]
+                      #text: '\n'
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'getWhen()', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'getWhen'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public long getWhen()'
+                        #text: 'public'
+                        #text: ' long'
+                        #text: ' getWhen()'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
-                        #text: 'Returns the timestamp of when this event occurred. Because an ActionEvent is a high-level, semantic event, the timestamp is typically the same as an underlying InputEvent.'
+                        #text: 'Returns the timestamp of when this event occurred. Because an\n ActionEvent is a high-level, semantic event, the timestamp is typically\n the same as an underlying InputEvent.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
@@ -1122,175 +1387,249 @@
                             #text: 'Since:'
                         {http://www.w3.org/1999/xhtml}dd:
                           #text: '1.4'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'getModifiers()' ]
+                      #text: '\n'
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'getModifiers()', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockList' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'getModifiers'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public int getModifiers()'
+                        #text: 'public'
+                        #text: ' int'
+                        #text: ' getModifiers()'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
                         #text: 'Returns the modifier keys held down during this action event.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'Returns:'
                         {http://www.w3.org/1999/xhtml}dd:
                           #text: 'the bitwise-or of the modifier constants'
-                  {http://www.w3.org/1999/xhtml}a: [ name: 'paramString()' ]
+                      #text: '\n'
+                  #text: '\n'
+                  {http://www.w3.org/1999/xhtml}a: [ name: 'paramString()', shape: 'rect' ]
+                    #text: '\n'
                     #comment: '   '
-                  #text: ' '
+                    #text: '\n'
+                  #text: '\n'
                   {http://www.w3.org/1999/xhtml}ul: [ class: 'blockListLast' ]
                     {http://www.w3.org/1999/xhtml}li: [ class: 'blockList' ]
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}h4:
                         #text: 'paramString'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}pre:
-                        #text: 'public '
-                        {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.lang', href: '../../../java/lang/String.html' ]
+                        #text: 'public'
+                        #text: ' '
+                        {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/lang/String.html', shape: 'rect', title: 'class in java.lang' ]
                           #text: 'String'
-                        #text: ' paramString()'
+                        #text: ' paramString()'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}div: [ class: 'block' ]
-                        #text: 'Returns a parameter string identifying this action event. This method is useful for event-logging and for debugging.'
+                        #text: 'Returns a parameter string identifying this action event.\n This method is useful for event-logging and for debugging.'
+                      #text: '\n'
                       {http://www.w3.org/1999/xhtml}dl:
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}strong:
                             #text: 'Overrides:'
                         {http://www.w3.org/1999/xhtml}dd:
                           {http://www.w3.org/1999/xhtml}code:
-                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#paramString()' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html#paramString()', shape: 'rect' ]
                               #text: 'paramString'
-                          #text: ' in class '
+                          #text: ' in class'
+                          #text: ' '
                           {http://www.w3.org/1999/xhtml}code:
-                            {http://www.w3.org/1999/xhtml}a: [ title: 'class in java.awt', href: '../../../java/awt/AWTEvent.html' ]
+                            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/AWTEvent.html', shape: 'rect', title: 'class in java.awt' ]
                               #text: 'AWTEvent'
                         {http://www.w3.org/1999/xhtml}dt:
                           {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                             #text: 'Returns:'
                         {http://www.w3.org/1999/xhtml}dd:
                           #text: 'a string identifying the event and its associated command'
+                      #text: '\n'
+                  #text: '\n'
+              #text: '\n'
+          #text: '\n'
+        #text: '\n'
+      #text: '\n'
       #comment: ' ========= END OF CLASS DATA ========= '
+      #text: '\n'
       #comment: ' ======= START OF BOTTOM NAVBAR ====== '
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}div: [ class: 'bottomNav' ]
-        {http://www.w3.org/1999/xhtml}a: [ name: 'navbar_bottom' ]
+        {http://www.w3.org/1999/xhtml}a: [ name: 'navbar_bottom', shape: 'rect' ]
+          #text: '\n'
           #comment: '   '
-        {http://www.w3.org/1999/xhtml}a: [ title: 'Skip navigation links', href: '#skip-navbar_bottom' ]
-        {http://www.w3.org/1999/xhtml}a: [ name: 'navbar_bottom_firstrow' ]
+          #text: '\n'
+        {http://www.w3.org/1999/xhtml}a: [ href: '#skip-navbar_bottom', shape: 'rect', title: 'Skip navigation links' ]
+        {http://www.w3.org/1999/xhtml}a: [ name: 'navbar_bottom_firstrow', shape: 'rect' ]
+          #text: '\n'
           #comment: '   '
-        #text: ' '
-        {http://www.w3.org/1999/xhtml}ul: [ title: 'Navigation', class: 'navList' ]
+          #text: '\n'
+        #text: '\n'
+        {http://www.w3.org/1999/xhtml}ul: [ class: 'navList', title: 'Navigation' ]
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: '../../../overview-summary.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../overview-summary.html', shape: 'rect' ]
               #text: 'Overview'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: 'package-summary.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: 'package-summary.html', shape: 'rect' ]
               #text: 'Package'
           {http://www.w3.org/1999/xhtml}li: [ class: 'navBarCell1Rev' ]
             #text: 'Class'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: 'class-use/ActionEvent.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: 'class-use/ActionEvent.html', shape: 'rect' ]
               #text: 'Use'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: 'package-tree.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: 'package-tree.html', shape: 'rect' ]
               #text: 'Tree'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: '../../../deprecated-list.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../deprecated-list.html', shape: 'rect' ]
               #text: 'Deprecated'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: '../../../index-files/index-1.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../index-files/index-1.html', shape: 'rect' ]
               #text: 'Index'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: '../../../help-doc.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../help-doc.html', shape: 'rect' ]
               #text: 'Help'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}div: [ class: 'aboutLanguage' ]
           {http://www.w3.org/1999/xhtml}em:
             {http://www.w3.org/1999/xhtml}strong:
-              #text: 'Java™ Platform'
-              {http://www.w3.org/1999/xhtml}br:
-              #text: 'Standard Ed. 7'
+              #text: 'Java'
+              #text: '™'
+              #text: ' Platform'
+              {http://www.w3.org/1999/xhtml}br: [ clear: 'none' ]
+              #text: 'Standard'
+              #text: ' Ed.'
+              #text: ' 7'
+        #text: '\n'
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}div: [ class: 'subNav' ]
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}ul: [ class: 'navList' ]
           {http://www.w3.org/1999/xhtml}li:
             #text: 'Prev Class'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ title: 'interface in java.awt.event', href: '../../../java/awt/event/ActionListener.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../java/awt/event/ActionListener.html', shape: 'rect', title: 'interface in java.awt.event' ]
               {http://www.w3.org/1999/xhtml}span: [ class: 'strong' ]
                 #text: 'Next Class'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}ul: [ class: 'navList' ]
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ target: '_top', href: '../../../index.html?java/awt/event/ActionEvent.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../index.html?java/awt/event/ActionEvent.html', shape: 'rect', target: '_top' ]
               #text: 'Frames'
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ target: '_top', href: 'ActionEvent.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: 'ActionEvent.html', shape: 'rect', target: '_top' ]
               #text: 'No Frames'
-        {http://www.w3.org/1999/xhtml}ul: [ id: 'allclasses_navbar_bottom', class: 'navList' ]
+        #text: '\n'
+        {http://www.w3.org/1999/xhtml}ul: [ class: 'navList', id: 'allclasses_navbar_bottom' ]
           {http://www.w3.org/1999/xhtml}li:
-            {http://www.w3.org/1999/xhtml}a: [ href: '../../../allclasses-noframe.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../allclasses-noframe.html', shape: 'rect' ]
               #text: 'All Classes'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}div:
+          #text: '\n'
           {http://www.w3.org/1999/xhtml}script: [ type: 'text/javascript' ]
-            #text: '<!--\n  allClassesLink = document.getElementById("allclasses_navbar_bottom");\n  if(window==top) [\n    allClassesLink.style.display = "block";\n  ]\n  else [\n    allClassesLink.style.display = "none";\n  ]\n  //-->\n'
+            #text: '<!--\n  allClassesLink = document.getElementById("allclasses_navbar_bottom");\n  if(window==top) {\n    allClassesLink.style.display = "block";\n  }\n  else {\n    allClassesLink.style.d'
+            #text: 'isplay = "none";\n  }\n  //-->\n'
+          #text: '\n'
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}div:
+          #text: '\n'
           {http://www.w3.org/1999/xhtml}ul: [ class: 'subNavList' ]
             {http://www.w3.org/1999/xhtml}li:
-              #text: 'Summary: '
+              #text: 'Summary:'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              #text: 'Nested | '
+              #text: 'Nested'
+              #text: ' |'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#field_summary' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#field_summary', shape: 'rect' ]
                 #text: 'Field'
-              #text: ' | '
+              #text: ' |'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#constructor_summary' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#constructor_summary', shape: 'rect' ]
                 #text: 'Constr'
-              #text: ' | '
+              #text: ' |'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#method_summary' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#method_summary', shape: 'rect' ]
                 #text: 'Method'
+          #text: '\n'
           {http://www.w3.org/1999/xhtml}ul: [ class: 'subNavList' ]
             {http://www.w3.org/1999/xhtml}li:
-              #text: 'Detail: '
+              #text: 'Detail:'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#field_detail' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#field_detail', shape: 'rect' ]
                 #text: 'Field'
-              #text: ' | '
+              #text: ' |'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#constructor_detail' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#constructor_detail', shape: 'rect' ]
                 #text: 'Constr'
-              #text: ' | '
+              #text: ' |'
+              #text: ' '
             {http://www.w3.org/1999/xhtml}li:
-              {http://www.w3.org/1999/xhtml}a: [ href: '#method_detail' ]
+              {http://www.w3.org/1999/xhtml}a: [ href: '#method_detail', shape: 'rect' ]
                 #text: 'Method'
-        {http://www.w3.org/1999/xhtml}a: [ name: 'skip-navbar_bottom' ]
+          #text: '\n'
+        #text: '\n'
+        {http://www.w3.org/1999/xhtml}a: [ name: 'skip-navbar_bottom', shape: 'rect' ]
+          #text: '\n'
           #comment: '   '
+          #text: '\n'
+      #text: '\n'
       #comment: ' ======== END OF BOTTOM NAVBAR ======= '
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}p: [ class: 'legalCopy' ]
         {http://www.w3.org/1999/xhtml}small:
           {http://www.w3.org/1999/xhtml}font: [ size: '-1' ]
-            #text: ''
-            {http://www.w3.org/1999/xhtml}a: [ href: 'http://bugreport.sun.com/bugreport/' ]
+            #text: ' '
+            {http://www.w3.org/1999/xhtml}a: [ href: 'http://bugreport.sun.com/bugreport/', shape: 'rect' ]
               #text: 'Submit a bug or feature'
-            {http://www.w3.org/1999/xhtml}br:
-            #text: ' For further API reference and developer documentation, see '
-            {http://www.w3.org/1999/xhtml}a: [ target: '_blank', href: 'http://docs.oracle.com/javase/7/docs/index.html' ]
+            #text: ' '
+            {http://www.w3.org/1999/xhtml}br: [ clear: 'none' ]
+            #text: 'For further API reference and developer documentation, see '
+            {http://www.w3.org/1999/xhtml}a: [ href: 'http://docs.oracle.com/javase/7/docs/index.html', shape: 'rect', target: '_blank' ]
               #text: 'Java SE Documentation'
             #text: '. That documentation contains more detailed, developer-targeted descriptions, with conceptual overviews, definitions of terms, workarounds, and working code examples.'
-            {http://www.w3.org/1999/xhtml}br:
+            {http://www.w3.org/1999/xhtml}br: [ clear: 'none' ]
             #text: ' '
-            {http://www.w3.org/1999/xhtml}a: [ href: '../../../../legal/cpyr.html' ]
+            {http://www.w3.org/1999/xhtml}a: [ href: '../../../../legal/cpyr.html', shape: 'rect' ]
               #text: 'Copyright'
-            #text: ' © 1993, 2014, Oracle and/or its affiliates. All rights reserved.'
+            #text: ' '
+            #text: '© 1993, 2014, Oracle and/or its affiliates.  All rights reserved. '
+      #text: '\n'
       #comment: ' Start SiteCatalyst code   '
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}script: [ src: 'http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code_download.js', type: 'text/JavaScript' ]
-        #text: ''
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}script: [ src: 'http://www.oracle.com/ocom/groups/systemobject/@mktg_admin/documents/systemobject/s_code.js', type: 'text/JavaScript' ]
-        #text: ''
+      #text: '\n\n'
       #comment: ' ********** DO NOT ALTER ANYTHING BELOW THIS LINE ! *********** '
+      #text: '\n'
       #comment: '  Below code will send the info to Omniture server '
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}script: [ type: 'text/javascript' ]
         #text: 'var s_code=s.t();if(s_code)document.write(s_code)'
+      #text: '\n\n'
       #comment: ' End SiteCatalyst code '
+      #text: '\n'
       {http://www.w3.org/1999/xhtml}noscript:
+        #text: '\n'
         {http://www.w3.org/1999/xhtml}p:
           #text: 'Scripting on this page tracks web page traffic, but does not change the content in any way.'
+        #text: '\n'
+      #text: '\n'

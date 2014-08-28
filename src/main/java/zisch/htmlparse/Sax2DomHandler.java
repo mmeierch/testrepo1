@@ -10,6 +10,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Comment;
 import org.w3c.dom.Document;
+import org.w3c.dom.DocumentType;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.ProcessingInstruction;
@@ -17,8 +18,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
+import org.xml.sax.ext.DefaultHandler2;
 import org.xml.sax.ext.LexicalHandler;
-import org.xml.sax.helpers.DefaultHandler;
 
 
 /**
@@ -26,7 +27,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * 
  * @author zisch
  */
-public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHandler {
+public class Sax2DomHandler extends DefaultHandler2 implements ContentHandler, LexicalHandler {
   // private static final String XMLNS_PREFIX = "xmlns";
   // private static final String XMLNS_STRING = "xmlns:";
   // private static final String XMLNS_URI = "http://www.w3.org/2000/xmlns/";
@@ -44,12 +45,12 @@ public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHa
   /**
    * Default constructor.
    * <p>
-   * This is a shortcut for {@link #Sax2Dom(Node) Sax2Dom(null)}.
+   * This is a shortcut for {@link #Sax2DomHandler(Node) Sax2Dom(null)}.
    * 
    * @throws ParserConfigurationException if the internally used {@link DocumentBuilder} cannot be created for some
    *           reason
    */
-  public Sax2Dom () throws ParserConfigurationException {
+  public Sax2DomHandler () throws ParserConfigurationException {
     this(null);
   }
 
@@ -62,7 +63,7 @@ public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHa
    * @throws ParserConfigurationException if the internally used {@link DocumentBuilder} cannot be created for some
    *           reason
    */
-  public Sax2Dom (final Node root) throws ParserConfigurationException {
+  public Sax2DomHandler (final Node root) throws ParserConfigurationException {
     if (root == null) {
       final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
       mDocument = factory.newDocumentBuilder().newDocument();
@@ -79,8 +80,8 @@ public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHa
 
   /**
    * Returns the {@link Document} which holds the built DOM nodes. If no root node has been specified at
-   * {@linkplain #Sax2Dom(Node) construction} or the specified root node was an instance of {@link Document} this method
-   * will return the {@linkplain #getRoot() root node} itself, otherwise it will return the
+   * {@linkplain #Sax2DomHandler(Node) construction} or the specified root node was an instance of {@link Document} this
+   * method will return the {@linkplain #getRoot() root node} itself, otherwise it will return the
    * {@linkplain Node#getOwnerDocument() owner document} of the specified root node.
    * 
    * @return the {@link Document} which holds the built DOM nodes
@@ -92,8 +93,8 @@ public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHa
   }
 
   /**
-   * Returns the root node specified at {@linkplain #Sax2Dom(Node) construction} or, if none had been specified, the
-   * {@link Document} instance which has been created as the root node. The returned node is the parent of the nodes
+   * Returns the root node specified at {@linkplain #Sax2DomHandler(Node) construction} or, if none had been specified,
+   * the {@link Document} instance which has been created as the root node. The returned node is the parent of the nodes
    * created from the SAX events.
    * 
    * @return the root node specified at construction
@@ -167,12 +168,8 @@ public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHa
       }
     }
 
-    // Append this new node onto current stack node
-    final Node last = peekNode();
-    last.appendChild(tmp);
-
-    // Push this node onto stack
-    pushNode(tmp);
+    // Append this new node to the current node and use it as new current node:
+    appendNode(tmp);
   }
 
   /**
@@ -239,6 +236,7 @@ public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHa
   /**
    * {@inheritDoc}
    */
+  @Override
   public void comment (final char[] ch, final int start, final int length) {
     final Node last = peekNode();
     final Comment comment = mDocument.createComment(new String(ch, start, length));
@@ -250,6 +248,7 @@ public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHa
   /**
    * {@inheritDoc}
    */
+  @Override
   public void startCDATA () {
     // do nothing
   }
@@ -257,6 +256,7 @@ public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHa
   /**
    * {@inheritDoc}
    */
+  @Override
   public void endCDATA () {
     // do nothing
   }
@@ -264,6 +264,7 @@ public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHa
   /**
    * {@inheritDoc}
    */
+  @Override
   public void startEntity (final String name) {
     // do nothing
   }
@@ -271,6 +272,7 @@ public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHa
   /**
    * {@inheritDoc}
    */
+  @Override
   public void endEntity (final String name) {
     // do nothing
   }
@@ -278,15 +280,24 @@ public class Sax2Dom extends DefaultHandler implements ContentHandler, LexicalHa
   /**
    * {@inheritDoc}
    */
+  @Override
   public void startDTD (final String name, final String publicId, final String systemId) throws SAXException {
-    // do nothing
+    // TODO: We currently ignore any actual DTD content (if there is some)!
+    final DocumentType dtd = mDocument.getImplementation().createDocumentType(name, publicId, systemId);
+    appendNode(dtd);
   }
 
   /**
    * {@inheritDoc}
    */
+  @Override
   public void endDTD () {
-    // do nothing
+    popNode();
+  }
+
+  private void appendNode (final Node node) {
+    peekNode().appendChild(node);
+    pushNode(node);
   }
 
   private void pushNode (final Node node) {
