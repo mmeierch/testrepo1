@@ -1,6 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?><project default="javadoc">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project default="javadoc">
     <target name="javadoc">
-        <javadoc access="public" author="true" classpath="lib/tagsoup-1.2.1.jar;C:\Programs\IBM\SDP\SDPShared\plugins\org.junit4_4.3.1\junit.jar" destdir="doc" doctitle="Test-API" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="zisch.lunr" source="1.6" sourcefiles="src/main/java/zisch/htmlparse/HtmlParseTest.java,src/main/java/zisch/Test.java,src/main/java/zisch/Replacer.java,src/main/java/zisch/htmlparse/Sax2DomHandler.java" sourcepath="src/main/java;src/main/resources" splitindex="true" use="true" version="true">
+    	<echoproperties/>
+    	<delete dir="doc"/>
+    	<mkdir dir="doc"/>
+        <javadoc access="public"
+        	     author="true"
+        	     classpath="lib/tagsoup-1.2.1.jar;C:\Programs\IBM\SDP\SDPShared\plugins\org.junit4_4.3.1\junit.jar"
+        	     destdir="doc"
+        	     doctitle="Test-API"
+        	     nodeprecated="false"
+        	     nodeprecatedlist="false"
+        	     noindex="false"
+        	     nonavbar="false"
+        	     notree="false"
+        	     packagenames="zisch zisch.lunr zisch.htmlparse"
+        	     source="1.6"
+        	     sourcefiles="src/main/java/zisch/htmlparse/HtmlParseTest.java,src/main/java/zisch/Test.java,src/main/java/zisch/Replacer.java,src/main/java/zisch/htmlparse/Sax2DomHandler.java"
+        	     sourcepath="src/main/java;src/main/resources"
+        	     splitindex="true"
+        	     use="true"
+        	     version="true">
             <link href="jar:platform:/resource/testrepo1/lib/tagsoup-1.2.1-javadoc.jar!/"/>
         </javadoc>
     </target>
