@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE catalog PUBLIC "-//OASIS//DTD XML Catalogs V1.1//EN" "http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd">
+
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+
+  <!--================================================================================
+      |   Oasis Catalog                                                              |
+      ================================================================================-->
+
+  <public publicId="-//OASIS//DTD XML Catalogs V1.1//EN" uri="catalog/catalog-1.1.dtd"/>
+  <system systemId="http://www.oasis-open.org/committees/entity/release/1.1/catalog.dtd" uri="catalog/catalog-1.1.dtd"/>
+
+  <!--================================================================================
+      |   XML Namespace                                                              |
+      ================================================================================-->
+	  
+  <uri name="http://www.w3.org/2001/xml.xsd" uri="xml/xml-2009-01.xsd"/>
+  <uri name="http://www.w3.org/2009/01/xml.xsd" uri="xml/xml-2009-01.xsd"/>
+  
+  <!--================================================================================
+      |   XSLT 1.0                                                                   |
+      ================================================================================-->
+	  
+  <!-- TODO! -->
+  
+  <!--================================================================================
+      |   XSLT 1.1                                                                   |
+      ================================================================================-->
+	  
+  <!-- TODO! -->
+  
+  <!--================================================================================
+      |   XSLT 2.0                                                                   |
+      ================================================================================-->
+	  
+  <!-- TODO! -->
+  
+  <!--================================================================================
+      |   HTML 4                                                                     |
+      ================================================================================-->
+  
+  <!--~~~~~~~~~~~~~~~~~~~~ HTML 4 Strict ~~~~~~~~~~~~~~~~~~~~-->
+
+  <public publicId="-//W3C//DTD HTML 4.0//EN" uri="html/html-4.01-strict.dtd"/>
+  <public publicId="-//W3C//DTD HTML 4.01//EN" uri="html/html-4.01-strict.dtd"/>
+  <system systemId="http://www.w3.org/TR/REC-html40/strict.dtd" uri="html/html-4.01-strict.dtd"/>
+  <system systemId="http://www.w3.org/TR/html4/strict.dtd" uri="html/html-4.01-strict.dtd"/>
+  <system systemId="http://www.w3.org/TR/html401/strict.dtd" uri="html/html-4.01-strict.dtd"/>
+  
+  <!--~~~~~~~~~~~~~~~~~~~~ HTML 4 Transitional ~~~~~~~~~~~~~~~~~~~~-->
+
+  <public publicId="-//W3C//DTD HTML 4.0 Transitional//EN" uri="html/html-4.01-loose.dtd"/>
+  <public publicId="-//W3C//DTD HTML 4.01 Transitional//EN" uri="html/html-4.01-loose.dtd"/>
+  <system systemId="http://www.w3.org/TR/REC-html40/loose.dtd" uri="html/html-4.01-loose.dtd"/>
+  <system systemId="http://www.w3.org/TR/html4/loose.dtd" uri="html/html-4.01-loose.dtd"/>
+  <system systemId="http://www.w3.org/TR/html401/loose.dtd" uri="html/html-4.01-loose.dtd"/>
+  
+  <!--~~~~~~~~~~~~~~~~~~~~ HTML 4 Frameset ~~~~~~~~~~~~~~~~~~~~-->
+ 
+  <public publicId="-//W3C//DTD HTML 4.0 Frameset//EN" uri="html/html-4.01-frameset.dtd"/>
+  <public publicId="-//W3C//DTD HTML 4.01 Frameset//EN" uri="html/html-4.01-frameset.dtd"/>
+  <system systemId="http://www.w3.org/TR/REC-html40/frameset.dtd" uri="html/html-4.01-frameset.dtd"/>
+  <system systemId="http://www.w3.org/TR/html4/frameset.dtd" uri="html/html-4.01-frameset.dtd"/>
+  <system systemId="http://www.w3.org/TR/html401/frameset.dtd" uri="html/html-4.01-frameset.dtd"/>
+  
+  <!--~~~~~~~~~~~~~~~~~~~~ HTML 4 Entities ~~~~~~~~~~~~~~~~~~~~-->
+  
+  <public publicId="-//W3C//ENTITIES Latin 1//EN//HTML" uri="html/html-4.01-lat1.ent"/>
+  <system systemId="http://www.w3.org/TR/REC-html40/HTMLlat1.ent" uri="html/html-4.01-lat1.ent"/>
+  <system systemId="http://www.w3.org/TR/html4/HTMLlat1.ent" uri="html/html-4.01-lat1.ent"/>
+  <system systemId="http://www.w3.org/TR/html401/HTMLlat1.ent" uri="html/html-4.01-lat1.ent"/>
+  
+  <public publicId="-//W3C//ENTITIES Special//EN//HTML" uri="html/html-4.01-special.ent"/>
+  <system systemId="http://www.w3.org/TR/REC-html40/HTMLspecial.ent" uri="html/html-4.01-special.ent"/>
+  <system systemId="http://www.w3.org/TR/html4/HTMLspecial.ent" uri="html/html-4.01-special.ent"/>
+  <system systemId="http://www.w3.org/TR/html401/HTMLspecial.ent" uri="html/html-4.01-special.ent"/>
+  
+  <public publicId="-//W3C//ENTITIES Symbols//EN//HTML" uri="html/html-4.01-symbol.ent"/>
+  <system systemId="http://www.w3.org/TR/REC-html40/HTMLsymbol.ent" uri="html/html-4.01-symbol.ent"/>
+  <system systemId="http://www.w3.org/TR/html4/HTMLsymbol.ent" uri="html/html-4.01-symbol.ent"/>
+  <system systemId="http://www.w3.org/TR/html401/HTMLsymbol.ent" uri="html/html-4.01-symbol.ent"/>
+  
+  <!--================================================================================
+      |   XHTML 1.0                                                                  |
+      ================================================================================-->
+  
+  <!--~~~~~~~~~~~~~~~~~~~~ XHTML 1.0 Strict ~~~~~~~~~~~~~~~~~~~~-->
+
+  <public publicId="-//W3C//DTD XHTML 1.0//EN" uri="html/xhtml-1.0-strict.dtd"/>
+  <system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd" uri="html/xhtml-1.0-strict.dtd"/>
+  <uri name="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd" uri="html/xhtml-1.0-strict.xsd"/>
+  
+  <!--~~~~~~~~~~~~~~~~~~~~ XHTML 1.0 Transitional ~~~~~~~~~~~~~~~~~~~~-->
+
+  <public publicId="-//W3C//DTD XHTML 1.0 Transitional//EN" uri="html/xhtml-1.0-transitional.dtd"/>
+  <system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" uri="html/xhtml-1.0-transitional.dtd"/>
+  <uri name="http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd" uri="html/xhtml-1.0-transitional.xsd"/>
+  
+  <!--~~~~~~~~~~~~~~~~~~~~ XHTML 1.0 Frameset ~~~~~~~~~~~~~~~~~~~~-->
+ 
+  <public publicId="-//W3C//DTD XHTML 1.0 Frameset//EN" uri="html/xhtml-1.0-frameset.dtd"/>
+  <system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd" uri="html/xhtml-1.0-frameset.dtd"/>
+  <uri name="http://www.w3.org/2002/08/xhtml/xhtml1-frameset.xsd" uri="html/xhtml-1.0-frameset.xsd"/>
+  
+  <!--~~~~~~~~~~~~~~~~~~~~ XHTML 1.0 Entities ~~~~~~~~~~~~~~~~~~~~-->
+  
+  <public publicId="-//W3C//ENTITIES Latin 1 for XHTML//EN" uri="html/xhtml-1.0-lat1.ent"/>
+  <system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml-lat1.ent" uri="html/xhtml-1.0-lat1.ent"/>
+  
+  <public publicId="-//W3C//ENTITIES Special for XHTML//EN" uri="html/xhtml-1.0-special.ent"/>
+  <system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml-special.ent" uri="html/xhtml-1.0-special.ent"/>
+  
+  <public publicId="-//W3C//ENTITIES Symbols for XHTML//EN" uri="html/xhtml-1.0-symbol.ent"/>
+  <system systemId="http://www.w3.org/TR/xhtml1/DTD/xhtml-symbol.ent" uri="html/xhtml-1.0-symbol.ent"/>
+  
+  <!--================================================================================
+      |   XHTML 1.1                                                                  |
+      ================================================================================-->
+	  
+  <!-- TODO! -->
+  
+  <!--================================================================================
+      |   HTML 5                                                                     |
+      ================================================================================-->
+  
+  <!-- TODO! -->
+  
+  <!--================================================================================
+      |   SVG 1.0                                                                    |
+      ================================================================================-->
+  
+  <!-- TODO! -->
+  
+  <!--================================================================================
+      |   SVG 1.1                                                                    |
+      ================================================================================-->
+  
+  <!-- TODO! -->
+  
+</catalog>
