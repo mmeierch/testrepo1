@@ -9,5 +9,6 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/testrepo1/lib/tagsoup-1.2.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/jackson-core-2.4.2.jar" sourcepath="lib/jackson-core-2.4.2-sources.jar"/>
 	<classpathentry kind="output" path=".eclipse-classes"/>
 </classpath>
